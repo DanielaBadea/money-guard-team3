@@ -1,0 +1,70 @@
+.background {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #101010;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .bgRight, .bgLeft {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+  }
+  
+  .bgRight {
+    right: 0;
+    background-image: url('../../images/bg_login_left.png');
+  }
+  
+  .bgLeft {
+    left: 0;
+    background-image: url('../../images/bg_login_right.png');
+  }
+  
+  .circleRight, .circleLeft {
+    position: absolute;
+    width: 640px;
+    height: 640px;
+    border-radius: 100%;
+    background: linear-gradient(220deg, #6d54eb 3.47%, #652392 90.06%);
+    filter: blur(400px);
+  }
+  
+  .circleRight {
+    top: 500px;
+    right: 200px;
+}
+.circleTop{
+    border-radius: 100%;
+    background-color: #302e8e;
+    filter: blur(300px);
+    width: 360px;
+    height: 360px;
+    position: absolute;
+}
+.circleTopR{
+    filter: blur(200px);
+    width: 450px;
+    height: 450px;
+    background-color: #2f15b0ba;
+    border-radius: 100%;
+    position: absolute;
+    left: 100px;
+    top: -100px;
+}
+  
+  .circleLeft {
+    bottom: 0;
+    right: 300px;
+  }
+  

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import css from '../../sass/Module/RegistrationForm.module.css';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { signUp } from '../../redux/auth/operations';
+import logo from '../../images/logo.png';
 
 const registrationSchema = Yup.object().shape({
   username: Yup.string()
@@ -21,42 +22,75 @@ const registrationSchema = Yup.object().shape({
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
+  const [errorText, setErrorText] = useState('');
+
+  const handleSignUp = async (values, { setSubmitting }) => {
+    try {
+      await dispatch(signUp(values));
+      setSubmitting(false);
+    } catch (error) {
+      if (error.response) {
+        if (error.response.status === 400) {
+          setErrorText('Validation error. Please check your inputs.');
+        } else if (error.response.status === 409) {
+          setErrorText('User with such email already exists.');
+        } else {
+          setErrorText('An error occurred. Please try again later.');
+        }
+      } else if (error.request) {
+        setErrorText('Network error. Please check your internet connection.');
+      } else {
+        setErrorText('Unexpected error. Please try again later.');
+      }
+      setSubmitting(false);
+    }
+  };
 
   return (
-    <Formik
+    <div className={css.register}>
+         <Formik
       initialValues={{ username: '', email: '', password: '' }}
       validationSchema={registrationSchema}
-      onSubmit={(values, { setSubmitting }) => {
-        dispatch(signUp(values));
-        setSubmitting(false);
-      }}
+      onSubmit={handleSignUp}
     >
       {({ isSubmitting }) => (
-        <Form>
-          <div>
-            <label htmlFor="username">Username</label>
-            <Field name="username" type="text" />
+        <Form autoComplete='off' className={css.form}>
+            <div className={css.containerLogo}>
+            <img src={logo} alt="Logo" />
+            </div>
+         
+         <div className={css.wrapperInput}>
+         <div >
+            <Field name="username" type="text" placeholder="Name" className={`${css.input} ${css.user}`} />
             <ErrorMessage name="username" component="div" className={css.error} />
           </div>
           <div>
-            <label htmlFor="email">Email</label>
-            <Field name="email" type="email" />
+            <Field name="email" type="email" placeholder="E-mail" className={`${css.input} ${css.mail}`}/>
             <ErrorMessage name="email" component="div" className={css.error} />
           </div>
           <div>
-            <label htmlFor="password">Password</label>
-            <Field name="password" type="password" />
+            <Field name="password" type="password" placeholder="Password" className={`${css.input} ${css.lock}`}/>
             <ErrorMessage name="password" component="div" className={css.error} />
           </div>
+
+         </div>
+          <div className={css.button}>
           <button type="submit" disabled={isSubmitting}>
             {isSubmitting ? 'Signing up...' : 'Sign up'}
           </button>
-          <div>
-            <NavLink to="/login">Already have an account? Login</NavLink>
           </div>
+         
+          <div className={css.error}>{errorText}</div>
+          <div className={css.link}>
+            <NavLink to="/login">Already have an account? Login</NavLink>
+          </div>       
         </Form>
       )}
     </Formik>
+
+    </div>
+  
+   
   );
 };
 

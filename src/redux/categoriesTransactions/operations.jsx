@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import Notiflix from "notiflix";
 
-axios.defaults.baseURL = "https://connections-api.herokuapp.com";
+axios.defaults.baseURL = "https://wallet.b.goit.study/api";
 
 export const getTransactionCategories = createAsyncThunk(
     "transaction/transactionCategories",

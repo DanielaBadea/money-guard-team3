@@ -10,7 +10,7 @@ const LoginPage = lazy(() => import("../pages/LoginPage"));
 const App = () => {
   return (
     <>
-      <h1 className={css.title}>My App</h1>
+    <h1>Hello</h1>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<HomeTab />} />
