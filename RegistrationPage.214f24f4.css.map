@@ -1,1 +1,0 @@
-{"mappings":"ACAA","sources":["RegistrationPage.214f24f4.css","src/sass/Module/RegistrationForm.module.css"],"sourcesContent":[".vHucuG_error {\n  color: red;\n  font-size: 12px;\n}\n\n/*# sourceMappingURL=RegistrationPage.214f24f4.css.map */\n",".error {\n    color: red;\n    font-size: 12px;\n  }"],"names":[],"version":3,"file":"RegistrationPage.214f24f4.css.map"}
