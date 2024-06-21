@@ -1,10 +1,20 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
+import { RiH1 } from "react-icons/ri";
+import Header from "../Components/Header";
 
 const HomeTab = () => {
+    const {isLoggedIn} = useAuth()
     return(
         <div>
-            <ul>
+{isLoggedIn ? (
+    <>
+    <Header/>
+<h1>Bun venit pe pagina!</h1>
+    </>
+) : (
+    <ul>
                 <li>
                     <NavLink to='/register'>
                     Registration
@@ -18,6 +28,7 @@ const HomeTab = () => {
                     
                 </li>
             </ul>
+)}
         </div>
     )
 }

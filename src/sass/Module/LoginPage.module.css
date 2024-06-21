@@ -22,27 +22,33 @@
   }
   
   .bgRight {
+    width: 100%;
+    min-width: 450px;
     right: 0;
     background-image: url('../../images/bg_login_left.png');
+    overflow: hidden;
   }
   
   .bgLeft {
+    width: 100%;
+    min-height:546px;
     left: 0;
     background-image: url('../../images/bg_login_right.png');
+    overflow: hidden;
   }
   
-  .circleRight, .circleLeft {
+  .circleRight, .circleLeft, .circleTopR{
     position: absolute;
-    width: 640px;
-    height: 640px;
-    border-radius: 100%;
-    background: linear-gradient(220deg, #6d54eb 3.47%, #652392 90.06%);
-    filter: blur(400px);
   }
   
   .circleRight {
-    top: 500px;
-    right: 200px;
+    width: 640px;
+    height: 640px;
+    top: -300px;
+    right: -118px;
+    border-radius: 100%;
+    background: linear-gradient(220deg, #6d54eb 3.47%, #652392 90.06%);
+    filter: blur(400px);
 }
 .circleTop{
     border-radius: 100%;
@@ -50,7 +56,6 @@
     filter: blur(300px);
     width: 360px;
     height: 360px;
-    position: absolute;
 }
 .circleTopR{
     filter: blur(200px);
@@ -64,7 +69,12 @@
 }
   
   .circleLeft {
-    bottom: 0;
-    right: 300px;
+    border-radius: 100%;
+    background: linear-gradient(46deg, #8e2e79 0%, #ab33ad 100%);
+    filter: blur(200px);
+    width: 250px;
+    height: 250px;
+    bottom: -100px;
+    left: 0;
   }
   
