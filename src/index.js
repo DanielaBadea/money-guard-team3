@@ -14,7 +14,7 @@ root.render(
   <React.StrictMode>
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-    <BrowserRouter >
+    <BrowserRouter basename="money-guard-team3">
       <App />
     </BrowserRouter>
   </PersistGate>
