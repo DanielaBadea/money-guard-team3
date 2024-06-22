@@ -29,19 +29,9 @@ const RegistrationForm = () => {
       await dispatch(signUp(values));
       setSubmitting(false);
     } catch (error) {
-      if (error.response) {
-        if (error.response.status === 400) {
-          setErrorText('Validation error. Please check your inputs.');
-        } else if (error.response.status === 409) {
-          setErrorText('User with such email already exists.');
-        } else {
-          setErrorText('An error occurred. Please try again later.');
-        }
-      } else if (error.request) {
+      if (error.request) {
         setErrorText('Network error. Please check your internet connection.');
-      } else {
-        setErrorText('Unexpected error. Please try again later.');
-      }
+      } 
       setSubmitting(false);
     }
   };

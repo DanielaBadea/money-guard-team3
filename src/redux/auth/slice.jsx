@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { signUp, signIn, signOut } from './operations';
 
 const initialState = {
-  user: { name: null, email: null },
+  user: {username: null, email: null },
   token: null,
   isLoggedIn: false,
 };
@@ -23,7 +23,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(signOut.fulfilled, state => {
-        state.user = { name: null, email: null };
+        state.user = { username: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
       })

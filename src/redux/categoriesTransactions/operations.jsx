@@ -9,10 +9,17 @@ export const getTransactionCategories = createAsyncThunk(
     async(_, thunkAPI) => {
         try{
             const response = await axios.get('/transaction-categories');
+            if(response.status === 200){
+                Notiflix.Notify.success('Transactions returned!')
+              }
             return response.data;
-        }catch(err){
-            Notiflix.Notify.failure('Cannot get transaction categories. Please try again later.');
-            return thunkAPI.rejectWithValue(err.message);
+        }catch(error){
+            if(error.response && error.response.status=== 401){
+                Notiflix.Notify.failure('Bearer auth failed!')
+              }else {
+                Notiflix.Notify.failure('Unexpected error. Please try again later.');
+              }
+            return thunkAPI.rejectWithValue(error.message);
         }
     }
 );

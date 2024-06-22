@@ -19,27 +19,18 @@ const loginSchema = Yup.object().shape({
   const LoginForm = () => {
     const dispatch = useDispatch();
   const [errorText, setErrorText] = useState('');
-    const handleSignIn = async (values, { setSubmitting }) => {
+
+   const handleSignIn = async (values, { setSubmitting }) => {
         try {
-          await dispatch(signIn(values));
-          setSubmitting(false);
+            await dispatch(signIn(values));
+            setSubmitting(false);
         } catch (error) {
-          if (error.response) {
-            if (error.response.status === 400) {
-              setErrorText('Validation error. Please check your inputs.');
-            } else if (error.response.status === 409) {
-              setErrorText('User with such email already exists.');
-            } else {
-              setErrorText('An error occurred. Please try again later.');
+            if (error.request) {
+                setErrorText('Network error. Please check your internet connection.');
+            } 
             }
-          } else if (error.request) {
-            setErrorText('Network error. Please check your internet connection.');
-          } else {
-            setErrorText('Unexpected error. Please try again later.');
-          }
-          setSubmitting(false);
-        }
-      };
+            setSubmitting(false);
+        };
 
     return (
       <Formik

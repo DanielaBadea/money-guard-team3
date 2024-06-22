@@ -27,22 +27,17 @@ const Header = () => {
         return email.split('@')[0];
     }
 
-    const handleLogout = async () => {
-        try {
-            await dispatch(signOut());
-            localStorage.clear();
-            navigate('/login');
-            Notiflix.Notify.success("You have been successfully logged out.");
-        } catch (error) {
-            if (error.response && error.response.status === 404) {
-                Notiflix.Notify.failure("Logout endpoint not found. Please try again later.");
-            } else if (error.response && error.response.status === 401) {
-                Notiflix.Notify.failure("Bearer authentication failed.");
-            } else {
-                Notiflix.Notify.failure("Logout failed. Please try again.");
-            }
-        }
+    const handleLogout = () => {
+        dispatch(signOut())
+            .then(() => {
+                localStorage.clear();
+                navigate('/login');
+            })
+            .catch(error => {
+                Notiflix.Notify.error('Logout failed:', error);
+            });
     }
+
 
     return (
         <div className={css.wrapper}>

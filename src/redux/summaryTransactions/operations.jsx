@@ -9,10 +9,19 @@ export const getTransactionsSummary = createAsyncThunk(
     async(_, thunkAPI) => {
         try{
             const response = await axios.get('/transactions-summary');
+            if(response.status === 200){
+                Notiflix.Notify.success('Transaction summary returned!')
+              }
             return response.data;
-        }catch(err){
-            Notiflix.Notify.failure('Cannot get transactions summary. Please try again later.');
-            return thunkAPI.rejectWithValue(err.message);
+        }catch(error){
+            if(error.response && error.response.status=== 400){
+                Notiflix.Notify.failure('Validation error!')
+            }else if(error.response && error.response.status=== 401){
+                Notiflix.Notify.failure('Bearer auth failed!')
+              }else {
+                Notiflix.Notify.failure('Unexpected error. Please try again later.');
+              }
+            return thunkAPI.rejectWithValue(error.message);
         }
     }
 );
