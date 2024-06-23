@@ -20,8 +20,8 @@ padding-top: 16px;
 padding-bottom: 16px;
 border-bottom: 1px solid grey;
 }
-.transactionItem > td{
-text-align: start
+td {
+text-align: center
 }
 
 .income{
