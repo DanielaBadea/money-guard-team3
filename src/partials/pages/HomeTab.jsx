@@ -18,7 +18,7 @@ const HomeTab = () => {
         <ul className={css.list}>
         <li >
             <NavLink to = '/' className={css.link}> 
-            <span><FaHome/></span>
+            <span className={css.iconHome}><FaHome/></span>
             <span>Home</span>
             </NavLink>
         </li>
