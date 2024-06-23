@@ -4,6 +4,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { RiH1 } from 'react-icons/ri';
 import Header from '../Components/Header';
 import Navigation from '../Components/Navigation';
+import TransactionsList from "../Components/TransactionsList";
 
 const HomeTab = () => {
   const { isLoggedIn } = useAuth();
@@ -25,8 +26,10 @@ const HomeTab = () => {
           </li>
         </ul>
       )}
+      <TransactionsList/>
     </div>
   );
 };
+
 
 export default HomeTab;
