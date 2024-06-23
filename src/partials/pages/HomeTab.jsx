@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { RiH1 } from "react-icons/ri";
 import Header from "../Components/Header";
+import TransactionsList from "../Components/TransactionsList";
 
 const HomeTab = () => {
     const {isLoggedIn} = useAuth()
@@ -29,6 +30,7 @@ const HomeTab = () => {
                 </li>
             </ul>
 )}
+<TransactionsList/>
         </div>
     )
 }

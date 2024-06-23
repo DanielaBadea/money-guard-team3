@@ -6,6 +6,8 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { signUp } from '../../redux/auth/operations';
 import logo from '../../images/logo.png';
+import PasswordStrengthBar from 'react-password-strength-bar-with-style-item';
+import useMediaQuerry from '../../hooks/useMediaQuerry';
 
 const registrationSchema = Yup.object().shape({
   username: Yup.string()
@@ -18,11 +20,16 @@ const registrationSchema = Yup.object().shape({
   password: Yup.string()
     .required('Password is required')
     .min(6, 'Password is too short - should be 6 chars minimum'),
+
+    // confirmPassword: Yup.string()
+    // .oneOf([Yup.ref('password'), null], 'Passwords must match')
+    // .required('Confirm password is required'),
 });
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
   const [errorText, setErrorText] = useState('');
+  const {isDesktopOrLaptop, isBigScreen, isTabletOrMobile}=useMediaQuerry();
 
   const handleSignUp = async (values, { setSubmitting }) => {
     try {
@@ -37,19 +44,19 @@ const RegistrationForm = () => {
   };
 
   return (
-    <div className={css.register}>
+    <div className={`{css.register} ${isTabletOrMobile ? css.isTabletOrMobile : css.isDesktopOrLaptop}`}>
          <Formik
       initialValues={{ username: '', email: '', password: '' }}
       validationSchema={registrationSchema}
       onSubmit={handleSignUp}
     >
-      {({ isSubmitting }) => (
+      {({ isSubmitting, values}) => (
         <Form autoComplete='off' className={css.form}>
             <div className={css.containerLogo}>
             <img src={logo} alt="Logo" />
             </div>
          
-         <div className={css.wrapperInput}>
+         <div className={`${css.wrapperInput}`}>
          <div >
             <Field name="username" type="text" placeholder="Name" className={`${css.input} ${css.user}`} />
             <ErrorMessage name="username" component="div" className={css.error} />
@@ -60,16 +67,20 @@ const RegistrationForm = () => {
           </div>
           <div>
             <Field name="password" type="password" placeholder="Password" className={`${css.input} ${css.lock}`}/>
+            <PasswordStrengthBar password={values.password} />
             <ErrorMessage name="password" component="div" className={css.error} />
           </div>
-
+          {/* <div>
+                <Field name="confirmPassword" type="password" placeholder="Confirm password" className={`${css.input} ${css.lock}`} />
+                <ErrorMessage name="confirmPassword" component="div" className={css.error} />
+              </div> */}
          </div>
-          <div className={css.button}>
+          
+         <div className={css.button}>
           <button type="submit" disabled={isSubmitting}>
             {isSubmitting ? 'Signing up...' : 'Sign up'}
           </button>
           </div>
-         
           <div className={css.error}>{errorText}</div>
           <div className={css.link}>
             <NavLink to="/login">Already have an account? Login</NavLink>

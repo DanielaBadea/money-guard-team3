@@ -1,0 +1,56 @@
+/* .transactionItem{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid grey;
+} */
+.transactionItem{
+/* width: max(80%,565px); */
+width: 100%;
+height: 100%;
+grid-template-columns: repeat(7, 1fr);
+font-family: Poppins, sans-serif;
+font-size: 14px;
+font-weight: 600;
+display: grid;
+align-items: center;
+justify-items: center;
+padding-top: 16px;
+padding-bottom: 16px;
+border-bottom: 1px solid grey;
+}
+.transactionItem > td{
+text-align: start
+}
+
+.income{
+color: #ff868d;
+}
+.expense{
+font-family: "Poppins", sans-serif;
+font-weight: 600;
+font-size: 14px;
+text-align: right;
+color: #ffb627;
+}
+.edit{
+cursor: pointer;
+ width: 15px;
+height: 15px;
+/* color: white; */
+}
+.btn{
+border-radius: 20px;
+padding: 4px 12px;
+box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+background: linear-gradient(167deg, #ffc727 0%, #9e40ba 61.46%, #7000ff 90.54%);
+font-family: "Poppins", sans-serif;
+font-weight: 400;
+font-size: 14px;
+text-align: center;
+color: #fbfbfb;
+border: none;
+outline: none;
+cursor: pointer;
+}
