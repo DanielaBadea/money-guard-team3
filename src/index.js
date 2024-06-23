@@ -9,12 +9,13 @@ import { PersistGate } from "redux-persist/integration/react";
 const rootElement = document.getElementById('root');
 
 const root = createRoot(rootElement);
+const basename = process.env.NODE_ENV === 'production' ? 'money-guard-team3' : '';
 
 root.render(
   <React.StrictMode>
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-    <BrowserRouter basename="money-guard-team3">
+    <BrowserRouter basename={basename}>
       <App />
     </BrowserRouter>
   </PersistGate>
