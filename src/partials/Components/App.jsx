@@ -4,7 +4,8 @@ import {RestrictedRoute} from '../Components/configRoute/RestrictedRoute';
 import Navigation from '../Components/Navigation';
 import Loader from "./Loader";
 import css from "../../sass/Module/App.module.css";
-
+import Loader from "./Loader";
+import Header from "./Header";
 
 const HomeTab = lazy(() => import("../pages/HomeTab"));
 const StatisticsTab = lazy(() => import('../pages/StatisticsTab'));

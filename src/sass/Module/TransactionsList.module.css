@@ -4,6 +4,7 @@ width: 100%;
 max-width: 715px;
 height: 308px;
 border-collapse: collapse;
+margin: 0 auto;
 }
 .header{
 border-radius: 8px;

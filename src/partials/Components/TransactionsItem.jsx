@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import css from "../../sass/Module/TransactionsItem.module.css";
 import { MdOutlineModeEdit } from "react-icons/md";
+import { useDispatch} from "react-redux";
+import { deleteTransactions } from "../../redux/transactions/operations";
+import { useParams } from "react-router-dom";
 
 const TransactionsItem = ({ transaction }) => {
   const date = new Date(transaction.transactionDate);
@@ -10,9 +13,14 @@ const TransactionsItem = ({ transaction }) => {
   const fullDate = `${day}.${month}.${year}`;
   const transactionType = transaction.type === 'EXPENSE' ? '-' : '+';
   const [btndelete, setbtnDelete] = useState('Delete');
+  const dispatch = useDispatch();
+const {transactionId} = useParams();
+
 
   const handleDeleteClick = () => {
     setbtnDelete('Deleting');
+    dispatch(deleteTransactions(transaction.id));
+    // dispatch(deleteTransactions(transactionId));
   };
   return (
     <tr className={css.transactionItem}>

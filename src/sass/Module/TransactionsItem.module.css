@@ -1,10 +1,4 @@
-/* .transactionItem{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid grey;
-} */
+
 .transactionItem{
 /* width: max(80%,565px); */
 width: 100%;
@@ -18,10 +12,11 @@ align-items: center;
 justify-items: center;
 padding-top: 16px;
 padding-bottom: 16px;
-border-bottom: 1px solid grey;
+border-bottom: 1px solid #ffff;
 }
 td {
-text-align: center
+text-align: center;
+color:#ffff;
 }
 
 .income{
@@ -38,7 +33,7 @@ color: #ffb627;
 cursor: pointer;
  width: 15px;
 height: 15px;
-/* color: white; */
+color: white;
 }
 .btn{
 border-radius: 20px;
