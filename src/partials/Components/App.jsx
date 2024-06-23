@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import {RestrictedRoute} from '../Components/configRoute/RestrictedRoute';
 import css from "../../sass/Module/App.module.css";
 import Loader from "./Loader";
+import Header from "./Header";
 
 const HomeTab = lazy(() => import("../pages/HomeTab"));
 const RegistrationPage = lazy(() => import("../pages/RegistrationPage"));
