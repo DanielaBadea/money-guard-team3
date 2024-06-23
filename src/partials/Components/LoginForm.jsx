@@ -7,6 +7,7 @@ import { signIn } from "../../redux/auth/operations";
 import { NavLink } from "react-router-dom";
 import css from '../../sass/Module/LoginForm.module.css';
 import logo from '../../images/logo.png'
+import useMediaQuerry from "../../hooks/useMediaQuerry";
 
 const loginSchema = Yup.object().shape({
     email: Yup.string().email().required("Email is required"),
@@ -19,6 +20,7 @@ const loginSchema = Yup.object().shape({
   const LoginForm = () => {
     const dispatch = useDispatch();
   const [errorText, setErrorText] = useState('');
+  const {isDesktopOrLaptop, isBigScreen, isTabletOrMobile}=useMediaQuerry();
 
    const handleSignIn = async (values, { setSubmitting }) => {
         try {
@@ -37,6 +39,7 @@ const loginSchema = Yup.object().shape({
       initialValues={{  email: '', password: '' }}
       validationSchema={loginSchema}
       onSubmit={handleSignIn}
+      className={`${isTabletOrMobile ? css.isTabletOrMobile : css.isDesktopOrLaptop}`}
       >
           {({ isSubmitting }) => (
       <Form autoComplete='off' className={css.form}>

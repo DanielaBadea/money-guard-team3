@@ -11,9 +11,14 @@ export const getCurrency = createAsyncThunk(
     async (_, thunkAPI) => {
         try {
             const response = await axios.get(`/latest.json?app_id=${App_ID}&base=RON`);
+            if(response.status ===200){
+                Notiflix.Notify.success('Currency data returned!')
+            }
             return response.data;
         } catch (err) {
-            Notiflix.Notify.failure('Cannot get currency data. Please try again later.');
+            if(err.response && err.response.status === 404){
+                Notiflix.Notify.failure('Cannot get currency data.');
+            }
             return thunkAPI.rejectWithValue(err.message);
         }
     }
