@@ -1,0 +1,36 @@
+.statisticsTable {
+  width: 100%;
+  height: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse; /* Collapse borders between cells */
+  font-size: 1rem;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border: none; /* Remove borders */
+}
+
+th {
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  th,
+  td {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  th,
+  td {
+    padding: 6px;
+    font-size: 0.875rem;
+  }
+}
