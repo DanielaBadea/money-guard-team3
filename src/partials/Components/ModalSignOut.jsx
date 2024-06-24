@@ -7,7 +7,7 @@ const ModalSignOut = ({ logOut, closeModal }) => {
         <div className={css.overlay} onClick={closeModal}>
             <div className={css.content} onClick={(e) => e.stopPropagation()}>
                 <img src={logo} alt="Logo" />
-                <div>Are you sure you want to log out?</div>
+                <div className={css.title}>Are you sure you want to log out?</div>
                 <div className={css.btns}>
                     <button className={css.btnLogOut} onClick={logOut}>Logout</button>
                     <button className={css.btnCancel} onClick={closeModal}>Cancel</button>
