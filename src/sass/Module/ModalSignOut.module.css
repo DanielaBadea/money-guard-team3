@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 4;
 }
 
 .content {
@@ -33,7 +34,7 @@
 
 }
 
-.content p {
+.title {
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 18px;

@@ -27,7 +27,7 @@ export const signUp = createAsyncThunk(
       const res = await axios.post('/auth/sign-up', credentials);
       setAuthHeader(res.data.token);
       if(res.status === 201){
-        Notiflix.Notify.success(`Successful login! Welcome, ${res.data.user.username}!`)
+        Notiflix.Notify.success(`Welcome, ${res.data.user.username.toUpperCase()}!`)
       }
       return res.data;
     } catch (error) {
@@ -50,7 +50,7 @@ export const signIn = createAsyncThunk(
       const res = await axios.post('/auth/sign-in', credentials);
       setAuthHeader(res.data.token);
       if(res.status === 201){
-        Notiflix.Notify.success(`Successful login! Welcome, ${res.data.user.username}!`)
+        Notiflix.Notify.success(`Welcome, ${res.data.user.username.toUpperCase()}!`)
       }
       return res.data;
     } catch (error) {
