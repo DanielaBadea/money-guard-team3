@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 import css from '../../sass/Module/HomeTab.module.css';
-import TransactionsList from "../Components/TransactionsList";
-import { useAuth } from "../../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import TransactionsList from '../Components/TransactionsList';
+import { useAuth } from '../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const HomeTab = () => {
   const { isLoggedIn } = useAuth();
@@ -17,7 +17,7 @@ const HomeTab = () => {
   return (
     <>
       {isLoggedIn && (
-        <div className={css.wrapper}>
+        <div className={css.HomeTabWrapper}>
           <div className={css.wrapperPosition}>
             <div className={`${css.responsivePic} ${css.elip14}`}></div>
             <div className={`${css.responsivePic} ${css.elip19}`}></div>
@@ -31,6 +31,6 @@ const HomeTab = () => {
       )}
     </>
   );
-}
+};
 
 export default HomeTab;

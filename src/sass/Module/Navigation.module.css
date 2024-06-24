@@ -1,38 +1,40 @@
-.containerPage{
-    flex: 1;
-    padding-top:40px;
-    border-right: 1px solid #ffffff4a;
-}
 .navContainer {
-    position: absolute;
-    margin: 30px;
+  position: absolute;
+  margin: 40px 0px 20px 16px;
 }
-.link{
-font-family: "Poppins", sans-serif;
-font-weight: 700;
-font-size: 18px;
-color: #fbfbfb;
-display: flex;
-flex-direction: row;
-align-items: center;
-gap: 20px;
-transform: scale(1);
-transition: transform 0.2s ease-in;
+.list {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 12px;
 }
-.link:hover{
-    transform: scale(1.03);
+.link {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #fbfbfb;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  transform: scale(1);
+  transition: transform 0.2s ease-in;
 }
-.iconHome{
-    background-color: blueviolet;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.link:hover {
+  transform: scale(1.03);
+  font-weight: 700;
 }
-.list{
-    flex: 1;
+.link:focus {
+    font-weight: 700;
+  }
+.iconHome {
+  background-color: blueviolet;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.link:first-child{
-    margin-bottom: 12px;
+.link:first-child {
+  margin-bottom: 12px;
 }
