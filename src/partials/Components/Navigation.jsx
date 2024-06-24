@@ -1,11 +1,18 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import css from '../../sass/Module/Navigation.module.css';
 import Header from '../Components/Header';
 
 const Navigation = () => {
   const { isLoggedIn } = useAuth();
+const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate('/login');
+    }
+  }, [isLoggedIn, navigate]); 
 
   return (
     <>
