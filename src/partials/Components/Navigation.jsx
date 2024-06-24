@@ -1,5 +1,5 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { FaHome } from 'react-icons/fa';
 import { FaChartLine } from 'react-icons/fa6';
@@ -8,6 +8,13 @@ import css from '../../sass/Module/Navigation.module.css';
 
 const Navigation = () => {
   const { isLoggedIn } = useAuth();
+const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate('/login');
+    }
+  }, [isLoggedIn, navigate]); 
 
   return (
     <>

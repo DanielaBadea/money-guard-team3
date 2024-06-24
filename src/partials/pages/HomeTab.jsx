@@ -6,13 +6,13 @@ import { useNavigate } from 'react-router-dom';
 
 const HomeTab = () => {
   const { isLoggedIn } = useAuth();
-  const navigate = useNavigate();
+//   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!isLoggedIn) {
-      navigate('/login');
-    }
-  }, [isLoggedIn, navigate]);
+//   useEffect(() => {
+//     if (!isLoggedIn) {
+//       navigate('/login');
+//     }
+//   }, [isLoggedIn, navigate]);
 
   return (
     <>
