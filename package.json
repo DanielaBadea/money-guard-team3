@@ -20,6 +20,8 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
     "axios": "^1.7.2",
+    "chart.js": "^4.4.3",
+    "chartjs-plugin-datalabels": "^2.2.0",
     "formik": "^2.4.6",
     "modern-normalize": "^1.1.0",
     "notiflix": "^3.2.7",

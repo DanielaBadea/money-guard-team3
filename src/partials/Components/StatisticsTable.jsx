@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import css from '../../sass/Module/StatisticsTable.module.css';
-
+import { useSelector } from 'react-redux';
 const StatisticsTable = () => {
   const transactions =
     useSelector(state => state.transactions.currentMonth) || [];
@@ -16,6 +16,7 @@ const StatisticsTable = () => {
 
   return (
     <div className={css.statisticsTable}>
+      
       <table>
         <thead>
           <tr>
