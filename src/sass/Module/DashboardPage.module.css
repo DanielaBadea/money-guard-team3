@@ -1,13 +1,11 @@
 .dashboardPage {
+  padding: 5%;
   display: flex;
+  justify-content: center;
+  flex-direction: column;
   height: 100vh;
   width: 100vw;
-}
-
-.leftContent {
-  width: 35%;
   background: linear-gradient(136deg, #000, #6d54eb, #652392, #000);
-  box-sizing: border-box;
 }
 
 .rightContent {
@@ -15,8 +13,47 @@
   box-sizing: border-box;
   overflow-y: auto;
   display: flex;
-  flex-direction: row;
-  border-left: 1px solid white;
-  background: linear-gradient(136deg, #000, #6d54eb, #652392, #000);
+  flex-direction: column;
+}
+.currencyContainer {
+  display: none;
+}
+
+/* Media query pentru tablet */
+@media (min-width: 768px) {
+  .dashboardPage {
+    padding: 4%;
+    gap: 20px;
+  }
+
+  .leftContent {
+    display: flex;
+    flex-direction: row;
+    gap:32px;
+
+  }
+  .currencyContainer{
+    width: 50%;
+    display: flex;
+  }
+}
+/* Media query pentru desktop */
+@media (min-width: 1024px) {
+  .dashboardPage {
+    flex-direction: row;
+    padding: 0px;
+    gap: 0px;
+  }
+  .leftContent {
+    width: 35%;
+    flex-direction: column;
+    gap:32px;
+  }
+
+  .rightContent {
+    flex-direction: row;
+    border-left: 1px solid white;
+    background: linear-gradient(136deg, #000, #6d54eb, #652392, #000);
+  }
 }
 

@@ -1,0 +1,37 @@
+.balanceContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(82, 59, 126, 0.6);
+  height: 80px;
+  margin: 68px 0px 32px;
+  align-items: flex-start;
+}
+
+.balanceContainer span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  margin: 8px 0px 12px 55px;
+  color: rgba(255, 255, 255, 0.4);
+  align-self: flex-start;
+}
+
+.balanceContainer p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0px 0px 0px 55px;
+  color: white;
+}
+@media (min-width: 768px) {
+  .balanceContainer {
+      width: 50%;
+      margin: 125px 0px 0px;
+  }
+}
+@media (min-width: 1024px) {
+    .balanceContainer {
+        width: 100%;
+        margin: 132px 0px 0px;
+    }
+}

@@ -1,15 +1,17 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import css from '../../sass/Module/Balance.module.css'
 
-const Balance = () => {
-    // const totalBalance = useSelector ( (state) => state.finance.totalAmount)
+const CurrentBalance = () => {
+  const totalAmount = useSelector((state) => state.transactions.totalAmount);
 
-    return (
-        <>
-        <h1>Hello balance</h1>
-{/* <h1>Total Balance: ${totalBalance}</h1> */}
-        </>
-        
-    )
-}
-export default Balance;
+
+  return (
+    <div className={css.balanceContainer}>
+      <span>YOUR BALANCE</span>
+      <p>RON {totalAmount.toFixed(2)}</p>
+    </div>
+  );
+};
+
+export default CurrentBalance;

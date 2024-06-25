@@ -7,21 +7,27 @@ import CurrencyTab from './CurrencyTab';
 import css from '../../sass/Module/DashboardPage.module.css';
 import Balance from '../Components/Balance';
 
+
 const DashboardPage = () => {
   const { isLoggedIn } = useAuth();
+ 
   return (
     <>
       {isLoggedIn && (
         <div className={css.dashboardPage}>
           <div className={css.leftContent}>
             <Balance />
-            <CurrencyTab />
+            <div className={css.currencyContainer}>
+              <CurrencyTab />
+            </div>
+            
           </div>
 
           <div className={css.rightContent}>
             <Routes>
               <Route path="home" element={<HomeTab />} />
               <Route path="statistics" element={<StatisticsTab />} />
+              <Route path="currency" element={<CurrencyTab />} />
             </Routes>
           </div>
         </div>

@@ -1,12 +1,24 @@
 .navContainer {
   position: absolute;
-  margin: 40px 0px 20px 16px;
+  margin: 12px 0px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .list {
   display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 12px;
+  flex-direction: row;
+  list-style-type: none;
+  gap: 32px;
+  padding: 0;
+}
+.list p {
+  padding: 0px;
+  margin: 0px;
+}
+.list span {
+  display: none;
 }
 .link {
   font-family: 'Poppins', sans-serif;
@@ -25,16 +37,52 @@
   font-weight: 700;
 }
 .link:focus {
-    font-weight: 700;
-  }
-.iconHome {
-  background-color: blueviolet;
-  width: 24px;
-  height: 24px;
+  font-weight: 700;
+}
+.icon {
+  background-color: rgba(255, 255, 255, 0.4);
+  color: #2f15b0;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.link:first-child {
-  margin-bottom: 12px;
+.icon:hover {
+  background-color: blueviolet;
+  color: white;
+}
+.icon:focus {
+  background-color: blueviolet;
+}
+
+@media (min-width: 768px) {
+  .navContainer {
+    margin: 0px;
+    position: absolute;
+    width: 0px;
+    justify-content: flex-start;
+  }
+  .list {
+    flex-direction: column;
+    margin: 40px 0px 28px 32px;
+    gap: 12px;
+  }
+  .list p {
+    padding: 0px;
+    margin: 0px;
+  }
+  .list span {
+    display: flex;
+  }
+
+  .liCurrency {
+    display: none;
+  }
+  
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+
 }
