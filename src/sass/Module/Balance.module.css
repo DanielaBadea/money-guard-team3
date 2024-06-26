@@ -1,0 +1,33 @@
+.balanceContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(82, 59, 126, 0.6);
+  height: 80px;
+  align-items: flex-start;
+  border-radius: 8px;
+}
+
+.balanceContainer span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  margin: 8px 0px 12px 55px;
+  color: rgba(255, 255, 255, 0.4);
+  align-self: flex-start;
+}
+
+.balanceContainer p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0px 0px 0px 55px;
+  color: #ffffff;
+}
+@media (min-width: 768px) {
+ 
+}
+@media (min-width: 1024px) {
+    .balanceContainer {
+        width: 100%;
+    }
+}

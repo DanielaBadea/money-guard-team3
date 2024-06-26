@@ -1,25 +1,25 @@
 import React, { lazy, Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
-import {RestrictedRoute} from '../Components/configRoute/RestrictedRoute';
-import css from "../../sass/Module/App.module.css";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { RestrictedRoute } from '../Components/configRoute/RestrictedRoute';
 import Loader from "./Loader";
-import Header from "./Header";
+import DashboardPage from "../pages/DashboardPage";
 
-const HomeTab = lazy(() => import("../pages/HomeTab"));
 const RegistrationPage = lazy(() => import("../pages/RegistrationPage"));
 const LoginPage = lazy(() => import("../pages/LoginPage"));
 
 const App = () => {
   return (
     <>
-      <Suspense fallback={<Loader/>}>
+      <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/" element={<HomeTab />} />
-          <Route path="/register" element={<RestrictedRoute redirectTo ='/' component={<RegistrationPage />} />}/>
-          <Route path="/login" element={<RestrictedRoute redirectTo ='/register' component={<LoginPage />} />}/>
+        <Route path="/" element={<Navigate to="/dashboard/home" />} />
+          <Route path="/dashboard/*" element={<DashboardPage />} />
+          <Route path="/register" element={<RestrictedRoute redirectTo='/dashboard/home' component={<RegistrationPage />} />} />
+          <Route path="/login" element={<RestrictedRoute redirectTo='/dashboard/home' component={<LoginPage />} />} />
         </Routes>
       </Suspense>
     </>
   );
 };
+
 export default App;
