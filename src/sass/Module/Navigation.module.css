@@ -1,10 +1,9 @@
 .navContainer {
-  position: absolute;
-  margin: 12px 0px;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  margin-left: 16px;
 }
 .list {
   display: flex;
@@ -40,32 +39,31 @@
   font-weight: 700;
 }
 .icon {
-  background-color: rgba(255, 255, 255, 0.4);
-  color: #2f15b0;
+  background-color: #ffffff66;
+  color: #ffffff;
   width: 44px;
   height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.02s ease-in;
+  border-radius: 8px;
 }
-.icon:hover {
-  background-color: blueviolet;
-  color: white;
+
+.icon:hover{
+  box-shadow: 0 3px 10px 0 rgba(74, 86, 226, 0.5);
+  background-color: #7147f0;
 }
-.icon:focus {
-  background-color: blueviolet;
+.icon:active{
+  background-color: #7147f0;
 }
 
 @media (min-width: 768px) {
-  .navContainer {
-    margin: 0px;
-    position: absolute;
-    width: 0px;
+  .navContainer{
     justify-content: flex-start;
   }
   .list {
     flex-direction: column;
-    margin: 40px 0px 28px 32px;
     gap: 12px;
   }
   .list p {
@@ -81,8 +79,16 @@
   }
   
   .icon {
+    background-color: transparent;
     width: 24px;
     height: 24px;
   }
+  .link:hover .icon{
+    color: #7147f0;
+  }
+  .icon:focus {
+    color: #7147f0;
+  }
+  
 
 }

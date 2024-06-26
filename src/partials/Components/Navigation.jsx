@@ -4,13 +4,11 @@ import { useAuth } from '../../hooks/useAuth';
 import { FaHome } from 'react-icons/fa';
 import { FaChartLine } from 'react-icons/fa6';
 import { FaDollarSign } from "react-icons/fa6";
-import Header from '../Components/Header';
 import css from '../../sass/Module/Navigation.module.css';
 
 const Navigation = () => {
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
-
   useEffect(() => {
     if (!isLoggedIn) {
       navigate('/login');
@@ -19,7 +17,6 @@ const Navigation = () => {
 
   return (
     <>
-      {isLoggedIn && <Header />}
       <nav className={css.navContainer}>
         {isLoggedIn ? (
           <ul className={css.list}>

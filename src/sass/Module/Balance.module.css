@@ -3,8 +3,8 @@
   flex-direction: column;
   background-color: rgba(82, 59, 126, 0.6);
   height: 80px;
-  margin: 68px 0px 32px;
   align-items: flex-start;
+  border-radius: 8px;
 }
 
 .balanceContainer span {
@@ -21,17 +21,13 @@
   font-size: 30px;
   font-weight: 700;
   margin: 0px 0px 0px 55px;
-  color: white;
+  color: #ffffff;
 }
 @media (min-width: 768px) {
-  .balanceContainer {
-      width: 50%;
-      margin: 125px 0px 0px;
-  }
+ 
 }
 @media (min-width: 1024px) {
     .balanceContainer {
         width: 100%;
-        margin: 132px 0px 0px;
     }
 }
