@@ -11,7 +11,7 @@ const LoginPage = lazy(() => import("../pages/LoginPage"));
 const App = () => {
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/dashboard/*" element={<DashboardPage />} />

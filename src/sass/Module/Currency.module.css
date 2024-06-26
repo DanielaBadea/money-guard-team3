@@ -1,0 +1,6 @@
+.wrapperCurrency{
+    width: 100%;
+    box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+    background-color: rgba(82, 59, 126, 0.6);
+    border-radius: 0 0 8px 8px;
+}
