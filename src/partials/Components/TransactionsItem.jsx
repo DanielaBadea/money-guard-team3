@@ -18,7 +18,6 @@ const TransactionsItem = ({ transaction, isMobile, headerMobile }) => {
     const rowClass = transaction.type === 'INCOME' ? css.income : css.expense;
     const bgThClass = transaction.type === 'INCOME' ? css.incomeTh : css.expenseTh;
 
-
     const handleDeleteClick = () => {
         setBtnDelete('Deleting');
         dispatch(deleteTransactions(transaction.id));
@@ -28,8 +27,8 @@ const TransactionsItem = ({ transaction, isMobile, headerMobile }) => {
         <>
             {isMobile ? (
                 <div className={css.mobileItem}>
-                    <table className={css.mobileTable}>
                     <div className={`${css.bgTh} ${bgThClass}`}></div>
+                    <table className={css.mobileTable}>
                         <thead>
                             <tr className={css.header}>
                                 {headerMobile.map((header, index) => (
@@ -48,13 +47,13 @@ const TransactionsItem = ({ transaction, isMobile, headerMobile }) => {
                         </tbody>
                     </table>
                     <div className={css.btns}>
-                        <td className={css.cellBtn}>
-                          <button className={css.btn} onClick={handleDeleteClick}>{btnDelete}</button>
-                          </td>
-                          <td className={css.cellBtn}>
-                        <button className={css.btnEdit}><MdOutlineModeEdit className={css.icon}/> <span>Edit</span></button>
-                        </td>
-                          </div>
+                        <div className={css.cellBtn}>
+                            <button className={css.btn} onClick={handleDeleteClick}>{btnDelete}</button>
+                        </div>
+                        <div className={css.cellBtn}>
+                            <button className={css.btnEdit}><MdOutlineModeEdit className={css.icon}/> <span>Edit</span></button>
+                        </div>
+                    </div>
                 </div>
             ) : (
                 <tr className={css.transactionItem}>
