@@ -9,10 +9,9 @@ import Balance from '../Components/Balance';
 import Navigation from '../Components/Navigation';
 import Header from '../Components/Header';
 
-
 const DashboardPage = () => {
   const { isLoggedIn } = useAuth();
- 
+
   return (
     <>
      {isLoggedIn && <Header />}
@@ -33,7 +32,6 @@ const DashboardPage = () => {
             <div className={css.currencyContainer}>
               <CurrencyTab />
             </div>
-            
           </div>
 
           <div className={css.rightContent}>

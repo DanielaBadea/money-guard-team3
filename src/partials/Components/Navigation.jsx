@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { FaHome } from 'react-icons/fa';
 import { FaChartLine } from 'react-icons/fa6';
-import { FaDollarSign } from "react-icons/fa6";
+import { FaDollarSign } from 'react-icons/fa6';
 import Header from '../Components/Header';
 import css from '../../sass/Module/Navigation.module.css';
 
@@ -41,7 +41,7 @@ const navigate = useNavigate();
             </li>
             <li className={css.liCurrency}>
               <NavLink to="/dashboard/currency" className={css.link}>
-                <p className={css.icon} >
+                <p className={css.icon}>
                   <FaDollarSign />
                 </p>
                 <span>Currency</span>
