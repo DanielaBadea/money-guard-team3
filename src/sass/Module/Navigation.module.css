@@ -57,7 +57,12 @@
 .icon:active{
   background-color: #7147f0;
 }
-
+@media (min-width: 768px) and (max-width: 1024px){
+  .svg{
+    width: 18px;
+    height: 18px;
+  }
+}
 @media (min-width: 768px) {
   .navContainer{
     justify-content: flex-start;
@@ -78,13 +83,13 @@
     display: none;
   }
   
-  .icon {
-    background-color: transparent;
+  .svg {
     width: 24px;
     height: 24px;
   }
   .link:hover .icon{
-    color: #7147f0;
+    color: white;
+    background-color: #7147f0;
   }
   .icon:focus {
     color: #7147f0;

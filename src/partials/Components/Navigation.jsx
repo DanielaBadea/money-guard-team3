@@ -31,7 +31,7 @@ const Navigation = () => {
             <li>
               <NavLink to="/dashboard/statistics" className={css.link}>
                 <p className={css.icon}>
-                  <FaChartLine />
+                  <FaChartLine className={css.svg}/>
                 </p>
                 <span>Statistics</span>
               </NavLink>
@@ -39,7 +39,7 @@ const Navigation = () => {
             <li className={css.liCurrency}>
               <NavLink to="/dashboard/currency" className={css.link}>
                 <p className={css.icon} >
-                  <FaDollarSign />
+                  <FaDollarSign className={css.svg}/>
                 </p>
                 <span>Currency</span>
               </NavLink>
