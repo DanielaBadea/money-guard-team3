@@ -19,7 +19,7 @@ const navigate = useNavigate();
 
   return (
     <>
-      {isLoggedIn && <Header />}
+      {/* {isLoggedIn && <Header />} */}
       <nav className={css.navContainer}>
         {isLoggedIn ? (
           <ul className={css.list}>

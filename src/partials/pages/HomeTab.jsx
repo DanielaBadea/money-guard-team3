@@ -18,16 +18,10 @@ const HomeTab = () => {
     <>
       {isLoggedIn && (
         <div className={css.HomeTabWrapper}>
-          <div className={css.wrapperPosition}>
-            <div className={`${css.responsivePic} ${css.elip14}`}></div>
-            <div className={`${css.responsivePic} ${css.elip19}`}></div>
-            <div className={`${css.responsivePic} ${css.elip16}`}></div>
-            <div className={`${css.responsivePic} ${css.elip17}`}></div>
             <div className={css.container}>
               <TransactionsList />
             </div>
           </div>
-        </div>
       )}
     </>
   );
