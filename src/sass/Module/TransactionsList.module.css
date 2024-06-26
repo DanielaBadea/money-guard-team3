@@ -1,6 +1,10 @@
 .table{
     display: none;
 }
+.tableMobile{
+    height: 75%;
+    overflow-y: scroll;
+}
 @media (min-width: 768px) and (max-width: 1024px)  {
  .table{
     max-width: 704px;
