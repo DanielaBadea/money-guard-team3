@@ -151,10 +151,20 @@
         .edit{
         cursor: pointer;
         color: #ffffff;
+        /* transform: scale(1); */
+        background-color: transparent;
+        border-radius: 18px;
+        transition: color 0.02s ease-in ;
         }
         .svg{
         width: 15px;
         height: 15px;
+        }
+        .edit:hover{
+            /* transform: scale(1.5);
+            color: #7000ff;  */
+        box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+        background: linear-gradient(167deg, #ffc727 0%, #9e40ba 61.46%, #7000ff 90.54%);
         }
        
 }

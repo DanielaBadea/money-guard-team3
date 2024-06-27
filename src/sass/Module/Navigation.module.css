@@ -37,6 +37,7 @@
 }
 .link:focus {
   font-weight: 700;
+  /* background-color: #7147f0; */
 }
 .icon {
   background-color: #ffffff66;
@@ -50,14 +51,17 @@
   border-radius: 8px;
 }
 
-.icon:hover{
+.icon:hover,
+.icon:focus{
   box-shadow: 0 3px 10px 0 rgba(74, 86, 226, 0.5);
   background-color: #7147f0;
 }
-.icon:active{
-  background-color: #7147f0;
+@media (min-width: 768px) and (max-width: 1024px){
+  .svg{
+    width: 18px;
+    height: 18px;
+  }
 }
-
 @media (min-width: 768px) {
   .navContainer{
     justify-content: flex-start;
@@ -78,17 +82,16 @@
     display: none;
   }
   
-  .icon {
-    background-color: transparent;
+  .svg {
     width: 24px;
     height: 24px;
   }
   .link:hover .icon{
-    color: #7147f0;
+    color: white;
+    background-color: #7147f0;
   }
-  .icon:focus {
-    color: #7147f0;
+  .link:focus .icon{
+    color: white;
+    background-color: #7147f0;
   }
-  
-
 }
