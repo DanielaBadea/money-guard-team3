@@ -6,12 +6,20 @@
 
 .selectContainer {
   display: flex;
-  gap: 10px;
+  gap: 10px; /* Ensure there is space between the selects */
+  flex-direction: row; /* Default to row */
+  align-items: center; /* Center items vertically */
 }
 
-select {
-  padding: 5px;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+@media (max-width: 480px) {
+  .selectContainer {
+    flex-direction: column; /* Stack items vertically on mobile */
+    align-items: center; /* Center items horizontally */
+  }
+
+  select {
+    width: 100%; /* Full width on mobile */
+    max-width: 300px; /* Set a max-width for dropdowns */
+    margin-bottom: 10px; /* Add space between stacked dropdowns */
+  }
 }
