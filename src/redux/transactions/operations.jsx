@@ -70,9 +70,9 @@ export const addTransactions = createAsyncThunk(
 
   export const updateTransactions = createAsyncThunk(
     "transactions/updateTransactions",
-    async(transactionId, thunkAPI) => {
+    async({ transactionId, values }, thunkAPI) => {
         try{
-            const response = await axios.patch(`/transactions/${transactionId}`)
+            const response = await axios.patch(`/transactions/${transactionId}`, values)
             if(response.status === 200){
                 Notiflix.Notify.success('Transaction updated!')
               }
