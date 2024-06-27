@@ -4,6 +4,8 @@ import { MdOutlineModeEdit } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { deleteTransactions } from "../../redux/transactions/operations";
 import { useParams } from "react-router-dom";
+import useModal from "../../hooks/useModal";
+import ModalEditTransactions from './ModalEditTransactions';
 
 const TransactionsItem = ({ transaction, isMobile, headerMobile }) => {
     const date = new Date(transaction.transactionDate);
@@ -17,6 +19,7 @@ const TransactionsItem = ({ transaction, isMobile, headerMobile }) => {
     const { transactionId } = useParams();
     const rowClass = transaction.type === 'INCOME' ? css.income : css.expense;
     const bgThClass = transaction.type === 'INCOME' ? css.incomeTh : css.expenseTh;
+    const { isOpen, openModal, closeModal } = useModal();
 
     const handleDeleteClick = () => {
         setBtnDelete('Deleting');
@@ -50,7 +53,7 @@ const TransactionsItem = ({ transaction, isMobile, headerMobile }) => {
                         <div className={css.cellBtn}>
                             <button className={css.btn} onClick={handleDeleteClick}>{btnDelete}</button>
                         </div>
-                        <div className={css.cellBtn}>
+                        <div onClick={openModal} className={css.cellBtn}>
                             <button className={css.btnEdit}><MdOutlineModeEdit className={css.icon}/> <span>Edit</span></button>
                         </div>
                     </div>
@@ -62,10 +65,12 @@ const TransactionsItem = ({ transaction, isMobile, headerMobile }) => {
                     <td>{transaction.categoryId}</td>
                     <td>{transaction.comment}</td>
                     <td className={`${css.row} ${transaction.type === 'EXPENSE' ? css.expense : css.income}`}>{transaction.amount}</td>
-                    <td className={css.edit}><MdOutlineModeEdit className={css.svg} /></td>
+                    <td onClick={openModal} className={css.edit}><MdOutlineModeEdit className={css.svg} /></td>
                     <td><button type="button" className={css.btn} onClick={handleDeleteClick}>{btnDelete}</button></td>
                 </tr>
             )}
+
+            {isOpen && <ModalEditTransactions transaction={transaction} closeModal={closeModal} />}
         </>
     );
 };
