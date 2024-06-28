@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import css from "../../sass/Module/TransactionsItem.module.css";
 import { MdOutlineModeEdit } from "react-icons/md";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteTransactions } from "../../redux/transactions/operations";
-import { useParams } from "react-router-dom";
 import useModal from "../../hooks/useModal";
 import ModalEditTransactions from './ModalEditTransactions';
+import { getTransactionCategories } from "../../redux/categoriesTransactions/operations";
+import { selectorcategoriesTr } from "../../redux/categoriesTransactions/selectors";
 
 const TransactionsItem = ({ transaction, isMobile, headerMobile }) => {
     const date = new Date(transaction.transactionDate);
@@ -16,15 +17,21 @@ const TransactionsItem = ({ transaction, isMobile, headerMobile }) => {
     const transactionType = transaction.type === 'EXPENSE' ? '-' : '+';
     const [btnDelete, setBtnDelete] = useState('Delete');
     const dispatch = useDispatch();
-    const { transactionId } = useParams();
     const rowClass = transaction.type === 'INCOME' ? css.income : css.expense;
     const bgThClass = transaction.type === 'INCOME' ? css.incomeTh : css.expenseTh;
     const { isOpen, openModal, closeModal } = useModal();
+    const categories = useSelector(selectorcategoriesTr);
+    const category = categories.find(cat => cat.id === transaction.categoryId) || {};
 
-    const handleDeleteClick = () => {
+    const handleDeleteClick = async () => {
         setBtnDelete('Deleting');
-        dispatch(deleteTransactions(transaction.id));
+        await dispatch(deleteTransactions(transaction.id));
+        setBtnDelete('Delete'); 
     };
+
+    useEffect(() => {
+        dispatch(getTransactionCategories());
+    }, [dispatch]);
 
     return (
         <>
@@ -43,7 +50,7 @@ const TransactionsItem = ({ transaction, isMobile, headerMobile }) => {
                             <tr className={css.rowMob}>
                                 <td className={css.cell}>{fullDate}</td>
                                 <td className={css.cell}>{transactionType}</td>
-                                <td className={css.cell}>{transaction.categoryId}</td>
+                                <td className={css.cell}>{category.name}</td>
                                 <td className={css.cell}>{transaction.comment}</td>
                                 <td className={`${css.cell} ${rowClass}`}>{transaction.amount}</td>
                             </tr>
@@ -62,9 +69,9 @@ const TransactionsItem = ({ transaction, isMobile, headerMobile }) => {
                 <tr className={css.transactionItem}>
                     <td>{fullDate}</td>
                     <td className={css.row}>{transactionType}</td>
-                    <td>{transaction.categoryId}</td>
+                    <td>{category.name}</td>
                     <td>{transaction.comment}</td>
-                    <td className={`${css.row} ${transaction.type === 'EXPENSE' ? css.expense : css.income}`}>{transaction.amount}</td>
+                    <td className={`${css.row} ${rowClass}`}>{transaction.amount}</td>
                     <td onClick={openModal} className={css.edit}><MdOutlineModeEdit className={css.svg} /></td>
                     <td><button type="button" className={css.btn} onClick={handleDeleteClick}>{btnDelete}</button></td>
                 </tr>

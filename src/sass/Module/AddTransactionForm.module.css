@@ -1,0 +1,22 @@
+.btnAdd{
+    width: 44px;
+    height: 44px;
+    color: #fff;
+    background: linear-gradient(167deg, #ffc727 0%, #9e40ba 61.46%, #7000ff 90.54%);
+    border: none;
+    border-radius: 100%;
+    outline: none;
+    font-size: 30px;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    box-shadow: 1px 9px 15px #0003;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1);
+}
+.btnAdd:hover{
+    transform: scale(1.2);
+}
