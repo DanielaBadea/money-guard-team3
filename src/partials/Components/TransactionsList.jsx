@@ -5,19 +5,30 @@ import TransactionsItem from "./TransactionsItem";
 import useModal from "../../hooks/useModal";
 import ModalAddTransactions from "./ModalAddTransactions";
 import { getTransactions } from "../../redux/transactions/operations";
-import { selectorTransactions } from "../../redux/transactions/selectors";
+import { selectorError, selectorIsLoading, selectorTransactions } from "../../redux/transactions/selectors";
+import ButtonAddTransactions from "./ButtonAddTransactions";
+import Loader from "./Loader";
 
 const TransactionsList = () => {
     const headerMobile = ["Date", "Type", "Category", "Comment", "Sum"];
     const { isOpen, openModal, closeModal } = useModal();
     const dispatch = useDispatch();
+    const transactions = useSelector(selectorTransactions);
+    const isLoading = useSelector(selectorIsLoading);
+    const error = useSelector(selectorError);
+    const hasTransaction = transactions.length > 0;
 
     useEffect(() => {
         dispatch(getTransactions());
-    }, []);
+    }, [dispatch]);
+
+    if(isLoading){
+        return <Loader/>;
+    }
     
-    const transactions = useSelector(selectorTransactions);
-    const hasTransaction = transactions.length > 0;
+    if(error){
+        return <div className={css.error}>Error: {error}</div>;
+    }
 
     return (
         <div className={css.wrapper}>
@@ -43,22 +54,17 @@ const TransactionsList = () => {
                     </table>
                     <div className={css.tableMobile}>
                         {transactions.map((transaction) => (
-                            <TransactionsItem key={transaction.id} transaction={transaction} isMobile headerMobile={headerMobile} />
+                            <TransactionsItem key={transaction.id} transaction={transaction} isMobile headerMobile={headerMobile}  />
                         ))}
-                     </div>
-                    {/* <button type="button" onClick={openModal}>
-                        +
-                    </button> */}
+                    </div>
                 </>
             ) : (
-            <div className={css.placeholder}>No transactions
-              {/* <button type="button" onClick={openModal}>
-                +
-              </button> */}
-            </div>
-              
-        )}
-        {isOpen && <ModalAddTransactions closeModal={closeModal} />}
+                <div className={css.placeholder}>
+                    No transactions
+                </div>
+            )}
+            <ButtonAddTransactions onClick={openModal} />
+            {isOpen && <ModalAddTransactions closeModal={closeModal} />}
         </div>
     );
 };

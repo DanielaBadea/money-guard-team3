@@ -12,13 +12,13 @@ import CustomSelect from './CustomSelect';
 
 const ModalAddTransactions = ({ closeModal }) => {
   const [isToggled, setIsToggled] = useState(false);
-  const [startDate, setStartDate] = useState('');
+  const [startDate, setStartDate] = useState(new Date());
   const [selectedCategory, setSelectedCategory] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getTransactionCategories());
-  }, []);
+  }, [dispatch]);
 
   let categories = useSelector(selectorcategoriesTr);
   let incomeCategoryId;
@@ -27,6 +27,16 @@ const ModalAddTransactions = ({ closeModal }) => {
     incomeCategoryId = categories.filter(el => el.type === 'INCOME')[0].id;
     categories = categories.filter(el => el.type === 'EXPENSE');
   }
+
+  const dayClassName = date => {
+    const today = new Date();
+    return (
+      date.getDate() === today.getDate() &&
+      date.getMonth() === today.getMonth() &&
+      date.getFullYear() === today.getFullYear()
+    ) ? `${css['current-day']}` : undefined;
+  };
+
 
   const submitSchema = Yup.object().shape({
     amount: isToggled
@@ -136,6 +146,7 @@ const ModalAddTransactions = ({ closeModal }) => {
                     }}
                     wrapperClassName="datepicker"
                     dateFormat="dd.MM.yyyy"
+                    dayClassName={dayClassName}
                   />
                   <ErrorMessage
                     name="transactionDate"

@@ -54,12 +54,14 @@ const transactionsInitialState = {
         .addCase(deleteTransactions.fulfilled, (state, action) => {
           state.isLoading = false;
           state.error = null;
-          const index = state.transactions.findIndex(item => item.id === action.payload.id);
+          const index =  state.transactions.findIndex(
+            (item) => item.id === action.payload.id
+          );
           if (index > -1) {
-            state.totalAmount -= state.transactions[index].amount;
             state.transactions.splice(index, 1);
           }
-        })
+          state.totalAmount -= action.payload.amount;
+      })      
         .addCase(deleteTransactions.rejected, handleRejected)
     },
   });

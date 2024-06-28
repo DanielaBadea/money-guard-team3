@@ -10,7 +10,7 @@ export const getTransactions = createAsyncThunk(
         try{
             const response = await axios.get("/transactions");
             if(response.status === 200){
-                Notiflix.Notify.success('Transactions returned!')
+                // Notiflix.Notify.success('Transactions returned!')
               }
             return response.data
 
@@ -50,6 +50,7 @@ export const addTransactions = createAsyncThunk(
           if(response.status === 201){
             Notiflix.Notify.success('Transaction created!')
           }
+          console.log(response.data);
         return response.data;
       } catch (error) {
         if(error.response && error.response.status === 400){
