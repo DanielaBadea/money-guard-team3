@@ -2,69 +2,94 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import css from '../../sass/Module/StatisticsTable.module.css';
 
-const StatisticsTable = () => {
-  const transactions =
-    useSelector(state => state.transactions.currentMonth) || [];
+import React from 'react';
+import { useSelector } from 'react-redux';
+import css from '../../sass/Module/StatisticsTable.module.css';
 
-  // Filter transactions into expenses and income
-  const expenses = transactions.filter(
-    transaction => transaction.type === 'expense'
-  );
-  const income = transactions.filter(
-    transaction => transaction.type === 'income'
-  );
+const categories = [
+  'Main expenses',
+  'Products',
+  'Car',
+  'Self care',
+  'Child care',
+  'Household Products',
+  'Education',
+  'Leisure',
+  'Other expenses',
+];
+
+const StatisticsTable = () => {
+  const {
+    currentMonth: transactions = [],
+    loading,
+    error,
+  } = useSelector(state => state.transactions);
+
+  console.log('Transactions in StatisticsTable:', transactions);
+
+  const categorySums = categories.reduce((acc, category) => {
+    acc[category] = transactions
+      .filter(transaction => transaction.category === category)
+      .reduce((sum, transaction) => sum + transaction.amount, 0)
+      .toFixed(2);
+    return acc;
+  }, {});
+
+  const totalExpenses = transactions
+    .filter(transaction => transaction.type === 'expense')
+    .reduce((sum, transaction) => sum + transaction.amount, 0)
+    .toFixed(2);
+
+  const totalIncome = transactions
+    .filter(transaction => transaction.type === 'income')
+    .reduce((sum, transaction) => sum + transaction.amount, 0)
+    .toFixed(2);
+
+  if (loading) {
+    return <div className={css.loader}>Loading...</div>;
+  }
+
+  if (error) {
+    return <div className={css.error}>Error: {error}</div>;
+  }
 
   return (
     <div className={css.statisticsTable}>
       <table>
         <thead>
           <tr>
-            <th colSpan="2">Category</th>
+            <th>Category</th>
             <th>Sum</th>
           </tr>
         </thead>
         <tbody>
-          {/* Message if no transactions */}
           {transactions.length === 0 && (
             <tr>
-              <td colSpan="3">
+              <td colSpan="2">
                 You don't have any transactions in this period.
               </td>
             </tr>
           )}
 
-          {/* Display Expenses section */}
+          {categories.map(category => (
+            <tr key={category}>
+              <td>{category}</td>
+              <td>{categorySums[category] || '0.00'}</td>
+            </tr>
+          ))}
+
           <tr>
-            <td colSpan="2">
-              <strong>Expenses</strong>
-            </td>
             <td>
-              {expenses.length > 0
-                ? expenses
-                    .reduce(
-                      (total, transaction) => total + transaction.amount,
-                      0
-                    )
-                    .toFixed(2)
-                : '0.00'}
+              <strong>Total Expenses</strong>
             </td>
+            <td>{totalExpenses}</td>
           </tr>
 
-          {/* Display Income section */}
           <tr>
-            <td colSpan="2">
-              <strong>Income</strong>
-            </td>
             <td>
-              {income.length > 0
-                ? income
-                    .reduce(
-                      (total, transaction) => total + transaction.amount,
-                      0
-                    )
-                    .toFixed(2)
-                : '0.00'}
+              <strong>Total Income</strong>
             </td>
+            <td>{totalIncome}</td>
           </tr>
         </tbody>
       </table>
