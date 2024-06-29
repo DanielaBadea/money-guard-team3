@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import css from '../../sass/Module/StatisticsDashboard.module.css';
 import { fetchTransactions } from '../../redux/transactions/transactionsActions';
-
 const months = [
   'January',
   'February',
@@ -20,10 +19,13 @@ const months = [
 
 const StatisticsDashboard = () => {
   const dispatch = useDispatch();
-  const [month, setMonth] = useState(new Date().getMonth() + 1);
+  const [month, setMonth] = useState(new Date().getMonth() + 1); // 1-based month
   const [year, setYear] = useState(new Date().getFullYear());
 
   useEffect(() => {
+    console.log(
+      `Dispatching fetchTransactions for month: ${month}, year: ${year}`
+    );
     dispatch(fetchTransactions(month, year));
   }, [dispatch, month, year]);
 
