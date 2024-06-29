@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route, NavLink } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Routes, Route, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import HomeTab from './HomeTab';
 import StatisticsTab from './StatisticsTab';
@@ -12,6 +12,12 @@ import Header from '../Components/Header';
 const DashboardPage = () => {
   const { isLoggedIn } = useAuth();
 
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate('/login');
+    }
+  }, [isLoggedIn, navigate]);
   return (
     <>
      {isLoggedIn && <Header />}

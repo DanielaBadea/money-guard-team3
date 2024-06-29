@@ -1,8 +1,12 @@
+/* .rightContent{
+  position: relative;
+} */
 .dashboardPage {
   background: #000000;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  position: relative;
 }
 .wrapperPosition{
   width: 100%;
@@ -13,7 +17,7 @@
 }
 .wrapperPosition {
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .responsivePic {
   position: absolute;

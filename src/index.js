@@ -13,7 +13,7 @@ const basename =
   process.env.NODE_ENV === 'production' ? '/money-guard-team3' : '';
 
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter basename={basename}>
@@ -21,5 +21,5 @@ root.render(
         </BrowserRouter>
       </PersistGate>
     </Provider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );

@@ -10,7 +10,7 @@ export const getTransactionsSummary = createAsyncThunk(
         try{
             const response = await axios.get('/transactions-summary');
             if(response.status === 200){
-                Notiflix.Notify.success('Transaction summary returned!')
+                // Notiflix.Notify.success('Transaction summary returned!')
               }
             return response.data;
         }catch(error){
