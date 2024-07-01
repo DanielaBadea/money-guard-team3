@@ -10,8 +10,9 @@ export const getTransactionCategories = createAsyncThunk(
         try{
             const response = await axios.get('/transaction-categories');
             if(response.status === 200){
-                Notiflix.Notify.success('Transactions returned!')
+                // Notiflix.Notify.success('Transactions returned!')
               }
+              console.log(response.data)
             return response.data;
         }catch(error){
             if(error.response && error.response.status=== 401){

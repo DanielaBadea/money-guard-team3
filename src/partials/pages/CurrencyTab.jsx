@@ -11,6 +11,7 @@
 // export default CurrencyTab;
 
 import React from 'react';
+import css from '../../sass/Module/Currency.module.css'
 import Currency from '../Components/Currency';
 
 const CurrencyTab = () => {

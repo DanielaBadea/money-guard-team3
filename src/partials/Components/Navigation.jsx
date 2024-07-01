@@ -1,18 +1,22 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { FaHome } from 'react-icons/fa';
 import { FaChartLine } from 'react-icons/fa6';
 import { FaDollarSign } from "react-icons/fa6";
-import Header from '../Components/Header';
 import css from '../../sass/Module/Navigation.module.css';
 
 const Navigation = () => {
   const { isLoggedIn } = useAuth();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate('/login');
+    }
+  }, [isLoggedIn, navigate]);
 
   return (
     <>
-      {isLoggedIn && <Header />}
       <nav className={css.navContainer}>
         {isLoggedIn ? (
           <ul className={css.list}>
@@ -27,7 +31,7 @@ const Navigation = () => {
             <li>
               <NavLink to="/dashboard/statistics" className={css.link}>
                 <p className={css.icon}>
-                  <FaChartLine />
+                  <FaChartLine className={css.svg}/>
                 </p>
                 <span>Statistics</span>
               </NavLink>
@@ -35,7 +39,7 @@ const Navigation = () => {
             <li className={css.liCurrency}>
               <NavLink to="/dashboard/currency" className={css.link}>
                 <p className={css.icon} >
-                  <FaDollarSign />
+                  <FaDollarSign className={css.svg}/>
                 </p>
                 <span>Currency</span>
               </NavLink>

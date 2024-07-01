@@ -25,12 +25,28 @@ th {
   td {
     padding: 8px;
   }
+
+  table {
+    font-size: 0.875rem;
+  }
+
+  .statisticsTable {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 480px) {
   th,
   td {
     padding: 6px;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
+  }
+
+  .statisticsTable {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
   }
 }
