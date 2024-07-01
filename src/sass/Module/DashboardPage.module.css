@@ -55,9 +55,6 @@
   bottom: -350px;
   right: -200px;
 }
-.leftContent{
-  
-}
 .rightContent {
   flex: 1;
   box-sizing: border-box;
@@ -66,6 +63,7 @@
   flex-direction: column;
   z-index: 6;
 }
+
 .containerStaticComp{
 display: flex;
 flex-direction: column;
@@ -112,6 +110,7 @@ padding-top: 40px;
   }
   .currencyContainer{
     display: block;
+    z-index: 1;
   }
 }
 

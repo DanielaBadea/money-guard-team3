@@ -1,9 +1,10 @@
 import React, { lazy, Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { RestrictedRoute } from '../Components/configRoute/RestrictedRoute';
+import { RestrictedRoute} from '../Components/configRoute/RestrictedRoute';
 import Loader from "./Loader";
-import DashboardPage from "../pages/DashboardPage";
+// import DashboardPage from "../pages/DashboardPage";
 
+const DashboardPage = lazy(()=>import('../pages/DashboardPage'));
 const RegistrationPage = lazy(() => import("../pages/RegistrationPage"));
 const LoginPage = lazy(() => import("../pages/LoginPage"));
 
