@@ -1,25 +1,68 @@
-.statisticsDashboard {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
 .selectContainer {
   display: flex;
-  gap: 10px; /* Ensure there is space between the selects */
-  flex-direction: row; /* Default to row */
-  align-items: center; /* Center items vertically */
+  gap: 16px;
+  flex-direction: column;
+  align-items: center;
+  max-width: 336px;
 }
 
-@media (max-width: 480px) {
+@media (min-width: 768px) {
   .selectContainer {
-    flex-direction: column; /* Stack items vertically on mobile */
-    align-items: center; /* Center items horizontally */
+    flex-direction: row;
   }
+}
 
-  select {
-    width: 100%; /* Full width on mobile */
-    max-width: 300px; /* Set a max-width for dropdowns */
-    margin-bottom: 10px; /* Add space between stacked dropdowns */
-  }
+.selectWrapper {
+  position: relative;
+  width: 182px;
+  height: 50px;
+}
+
+.label {
+  background-color: rgba(74, 86, 226, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 12px 20px 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dropdownIcon {
+  margin-left: auto;
+  transition: transform 0.3s ease;
+}
+
+.dropdownIcon.open {
+  transform: rotate(180deg); 
+}
+
+.dropdown {
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  backdrop-filter: blur(100px);
+  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+  background: linear-gradient(360deg, rgba(83, 61, 186, 0.7) 0%, rgba(80, 48, 154, 0.7) 35.94%, rgba(106, 70, 165, 0.7) 61.04%, rgba(133, 93, 175, 0.7) 100%);
+  border-radius: 8px;
+  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  height: 157px;
+  overflow: auto;
+}
+
+.option {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #fbfbfb;
+  padding: 2px 103px 2px 20px;
+}
+
+.option:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ff868d;
 }

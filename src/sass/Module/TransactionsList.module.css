@@ -24,10 +24,9 @@
     max-width: 704px;
   }
 }
-/* Media query pentru desktop */
+/* Media query pentru tablet si desktop */
 @media (min-width: 768px) {
   .wrapper {
-    /* padding-top: 40px; */
     flex: 2;
   }
   .tableMobile {
@@ -37,7 +36,7 @@
     display: block;
     width: 100%;
     max-width: 715px;
-    height: 308px;
+    height: auto;
     border-collapse: collapse;
     margin: 0 auto;
   }
@@ -49,12 +48,13 @@
     box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
     background-color: rgba(82, 59, 126, 0.6);
     border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
   }
   .col {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    /* justify-items: center; */
-    /* width: max(80%, 565px); */
     width: 100%;
     height: 100%;
     align-items: center;
@@ -63,6 +63,7 @@
     font-family: Poppins, sans-serif;
     font-size: 16px;
     font-weight: 600;
+    gap: 20px;
   }
   .body {
     display: flex;

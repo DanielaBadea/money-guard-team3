@@ -13,7 +13,6 @@ export const getTransactions = createAsyncThunk(
                 // Notiflix.Notify.success('Transactions returned!')
               }
             return response.data
-
         }catch(error){
             if(error.response && error.response.status === 400){
                 Notiflix.Notify.failure('Validation error!');

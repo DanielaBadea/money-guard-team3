@@ -1,52 +1,53 @@
 .statisticsTable {
   width: 100%;
-  height: auto;
+  max-width: 336px;
 }
 
-table {
+.table {
   width: 100%;
-  border-collapse: collapse; /* Collapse borders between cells */
+  border-collapse: collapse; 
   font-size: 1rem;
+  margin-bottom: 15px;
 }
-
-th,
-td {
-  padding: 10px;
-  text-align: left;
-  border: none; /* Remove borders */
+.table > thead{
+  border-radius: 8px;
+  width: 100%;
+  height: 56px;
+  backdrop-filter: blur(100px);
+  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+  background-color: rgba(82, 59, 126, 0.6);
 }
-
-th {
-  font-weight: bold;
+.container{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  font-family: "Poppins", sans-serif;
+  color: #fbfbfb;
 }
-
-@media (max-width: 768px) {
-  th,
-  td {
-    padding: 8px;
-  }
-
-  table {
-    font-size: 0.875rem;
-  }
-
-  .statisticsTable {
-    width: 100%;
-    height: auto;
-    margin: 0 auto;
-  }
+.containerCol{
+  padding: 16px;
+  font-weight: 600;
+  font-size: 16px;
 }
-
-@media (max-width: 480px) {
-  th,
-  td {
-    padding: 6px;
-    font-size: 0.75rem;
-  }
-
-  .statisticsTable {
-    width: 100%;
-    height: auto;
-    margin: 0 auto;
-  }
+.containerRow{
+  font-weight: 400;
+  font-size: 14px;
+  padding: 16px 16px 16px 52px;
+  border-bottom: 1px solid #fbfbfb42;
 }
+.containerTypesExpenses{
+  margin-bottom: 16px;
+}
+.income{
+  color: #ff868d;
+  }
+  .expense{
+  color: #ffb627;
+  }
+.containerStyle{
+  font-weight: 600;
+  font-size: 14px;
+  padding-left: 16px;
+  padding-right: 16px;
+  }

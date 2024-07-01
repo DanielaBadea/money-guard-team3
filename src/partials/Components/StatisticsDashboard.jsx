@@ -1,64 +1,80 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState, useRef } from 'react';
 import css from '../../sass/Module/StatisticsDashboard.module.css';
-import { fetchTransactions } from '../../redux/transactions/transactionsActions';
+import { useDispatch } from 'react-redux';
+import { getTransactionsSummary } from '../../redux/summaryTransactions/operations';
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'
 ];
 
-const StatisticsDashboard = () => {
+const StatisticsDashboard = ({ summary }) => {
   const dispatch = useDispatch();
-  const [month, setMonth] = useState(new Date().getMonth() + 1);
-  const [year, setYear] = useState(new Date().getFullYear());
+  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+  const [isMonthDropdownOpen, setIsMonthDropdownOpen] = useState(false);
+  const [isYearDropdownOpen, setIsYearDropdownOpen] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchTransactions(month, year));
-  }, [dispatch, month, year]);
+    dispatch(getTransactionsSummary({ month: selectedMonth, year: selectedYear }));
+  }, [dispatch, selectedMonth, selectedYear]);
 
-  const handleMonthChange = e => {
-    setMonth(months.indexOf(e.target.value) + 1);
+  const handleMonthChange = (month) => {
+    setSelectedMonth(months.indexOf(month) + 1);
+    setIsMonthDropdownOpen(false);
   };
 
-  const handleYearChange = e => {
-    setYear(e.target.value);
+  const handleYearChange = (year) => {
+    setSelectedYear(parseInt(year));
+    setIsYearDropdownOpen(false);
   };
+
+  const toggleMonthDropdown = () => {
+    setIsMonthDropdownOpen(!isMonthDropdownOpen);
+    setIsYearDropdownOpen(false);
+  };
+
+  const toggleYearDropdown = () => {
+    setIsYearDropdownOpen(!isYearDropdownOpen);
+    setIsMonthDropdownOpen(false);
+  };
+
+  const yearOptions = Array.from({ length: 10 }, (_, index) => new Date().getFullYear() - index);
 
   return (
-    <div className={css.statisticsDashboard}>
+    <div className={`${css.statisticsDashboard}`}>
       <div className={css.selectContainer}>
-        <label>
-          <select value={months[month - 1]} onChange={handleMonthChange}>
-            {months.map((monthName, index) => (
-              <option key={index} value={monthName}>
-                {monthName}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          <select value={year} onChange={handleYearChange}>
-            {Array.from({ length: 10 }, (_, index) => (
-              <option
-                key={index + new Date().getFullYear()}
-                value={index + new Date().getFullYear()}
-              >
-                {index + new Date().getFullYear()}
-              </option>
-            ))}
-          </select>
-        </label>
+        <div className={css.selectWrapper}>
+          <div className={css.label} onClick={toggleMonthDropdown}>
+            {months[selectedMonth - 1]}
+            <IoIosArrowDown className={`${css.dropdownIcon} ${isMonthDropdownOpen ? 'open' : ''}`} />
+          </div>
+          {isMonthDropdownOpen && (
+            <div className={css.dropdown}>
+              {months.map((month, index) => (
+                <div key={index} className={css.option} onClick={() => handleMonthChange(month)}>
+                  {month}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+        <div className={css.selectWrapper}>
+          <div className={css.label} onClick={toggleYearDropdown}>
+            {selectedYear}
+            <IoIosArrowDown className={`${css.dropdownIcon} ${isYearDropdownOpen ? 'open' : ''}`} />
+          </div>
+          {isYearDropdownOpen && (
+            <div className={css.dropdown}>
+              {yearOptions.map((year, index) => (
+                <div key={index} className={css.option} onClick={() => handleYearChange(year)}>
+                  {year}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

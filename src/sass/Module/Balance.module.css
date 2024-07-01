@@ -5,6 +5,7 @@
   height: 80px;
   align-items: flex-start;
   border-radius: 8px;
+  z-index: 1;
 }
 
 .balanceContainer span {

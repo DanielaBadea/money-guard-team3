@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { lazy, useEffect } from 'react';
 import { Routes, Route, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import HomeTab from './HomeTab';
@@ -8,7 +8,6 @@ import css from '../../sass/Module/DashboardPage.module.css';
 import Balance from '../Components/Balance';
 import Navigation from '../Components/Navigation';
 import Header from '../Components/Header';
-
 
 const DashboardPage = () => {
   const { isLoggedIn } = useAuth();

@@ -12,7 +12,6 @@ export const getTransactionCategories = createAsyncThunk(
             if(response.status === 200){
                 // Notiflix.Notify.success('Transactions returned!')
               }
-              console.log(response.data)
             return response.data;
         }catch(error){
             if(error.response && error.response.status=== 401){
