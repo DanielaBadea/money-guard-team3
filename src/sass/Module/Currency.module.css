@@ -1,3 +1,137 @@
+
+.currencyWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  color: #fbfbfb;
+  overflow: hidden;
+}
+
+.currencyTable {
+  max-height: 170px;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.currencyHeadWrapper {
+  background: rgba(103, 77, 166, 0.7);
+  width: 100%;
+}
+
+.currencyTableHead {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15px 0;
+  margin: 0 auto 8px;
+  width: 100%;
+}
+
+.currencyTableBody {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.currencyTableBodyList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 14px;
+  width: 100%;
+}
+
+.currencyTableHeadItem,
+.currencyTableItem {
+  color: #fbfbfb;
+  font-size: 16px;
+  font-family: 'Poppins-SemiBold', sans-serif;
+  text-align: center;
+  flex: 1;
+}
+
+.currencyDiagram {
+  position: relative;
+  display: block;
+  height: auto;
+  max-height: 185px;
+  width: 100%;
+}
+
+.currencyDiagram img {
+  width: 100%;
+  height: auto;
+}
+
+.lowerNumber {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  color: #FF868D;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.higherNumber {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  color: #FF868D;
+  font-size: 12px;
+  font-weight: 400;
+}
+.lowerNumber,
+.higherNumber {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .currencyTableHead {
+    padding: 19px 0;
+    margin: 0 auto 24px;
+  }
+
+  .currencyTableBodyList {
+    gap: 24px;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .currencyTable {
+    margin-bottom: 24px;
+  }
+
+  .lowerNumber,
+  .higherNumber {
+    display: block;
+  }
+
+  .lowerNumber {
+    top: 5%;
+    left: 10%;
+  }
+
+  .higherNumber {
+    top: -21px;
+    right: 20%;
+  }
+}
+
+.gradient {
+  z-index: -20;
+  position: absolute;
+  width: 454px;
+  height: 454px;
+  border-radius: 454px;
+  background: rgba(47, 21, 176, 0.73);
+  filter: blur(100px);
+}
+
 .wrapperCurrency{
     width: 100%;
     box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
