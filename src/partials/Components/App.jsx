@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { RestrictedRoute} from '../Components/configRoute/RestrictedRoute';
 import Loader from "./Loader";
+import { PrivateRoute } from "./configRoute/PrivateRoute";
 // import DashboardPage from "../pages/DashboardPage";
 
 const DashboardPage = lazy(()=>import('../pages/DashboardPage'));
@@ -14,7 +15,7 @@ const App = () => {
       <Suspense fallback={<Loader />}>
         <Routes>
         <Route path="/" element={<Navigate to="/dashboard/home" />} />
-          <Route path="/dashboard/*" element={<DashboardPage />} />
+          <Route path="/dashboard/*" element={<PrivateRoute redirectTo="/login"  component={<DashboardPage />} />} />
           <Route path="/register" element={<RestrictedRoute redirectTo='/dashboard/home' component={<RegistrationPage />} />} />
           <Route path="/login" element={<RestrictedRoute redirectTo='/dashboard/home' component={<LoginPage />} />} />
         </Routes>

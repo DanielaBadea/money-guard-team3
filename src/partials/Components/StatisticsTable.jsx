@@ -54,6 +54,7 @@ const StatisticsTable = ({ summary }) => {
           </>
         )
       }
+
     </div>
   );
 };
