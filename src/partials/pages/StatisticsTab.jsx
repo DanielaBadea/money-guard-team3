@@ -28,7 +28,7 @@ const StatisticsTab = () => {
     <div className={css.statisticsTab}>
       <h3 className={css.title}>Statistics</h3>
       <div className={css.statistics}>
-        <StatisticsDashboard summary={transactionsSummary} />
+        <StatisticsDashboard />
         <StatisticsTable summary={transactionsSummary} />
       </div>
     </div>
