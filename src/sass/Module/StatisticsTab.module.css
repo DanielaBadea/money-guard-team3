@@ -1,15 +1,29 @@
 .statisticsTab {
   width: 100%;
-  height: 100vh; /* Full height of the viewport */
-  margin: 0 auto; /* Center the container horizontally */
-  position: relative; /* Enable positioning of child elements */
-  background: linear-gradient(276deg, #2e1746 3.19%, #2e225f 100%);
-  display: flex; /* Enable flexbox layout */
-  align-items: center; /* Center content vertically */
-  justify-content: flex-start; /* Align content to the start horizontally */
-  color: #fff; /* Ensure text is readable on the gradient background */
+  height: 100vh;
+  color: #fff;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
-
+.title{
+  color: #fbfbfb;
+  font-family: Poppins, sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  padding: 0;
+  text-align: left;
+  margin: 32px 0 20px 20px;
+  }
+.statistics{
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 280px;
+  margin: 0 auto;
+}
 .backgroundImageContainer {
   position: absolute;
   top: 0;
@@ -25,14 +39,9 @@
 .content {
   padding: 20px;
   box-sizing: border-box;
-  background: rgba(
-    255,
-    255,
-    255,
-    0.1
-  ); /* Optional: Add a slight background for better readability */
-  border-radius: 10px; /* Optional: Add rounded corners */
-  margin-left: 100px; /* Adjust this value to move content to the right */
+  background: rgba(255,255,255,0.1); 
+  border-radius: 10px; 
+  
 }
 
 h1 {
@@ -44,31 +53,6 @@ h1 {
   color: #fbfbfb;
   margin-bottom: 20px;
   padding: 10px 0; /* Add padding to the title */
-}
-
-.selectContainer {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 20px;
-}
-
-select {
-  background: linear-gradient(
-    0deg,
-    rgba(83, 61, 186, 0.7) 0%,
-    rgba(80, 48, 154, 0.7) 43.14%,
-    rgba(106, 70, 165, 0.525) 73.27%,
-    rgba(133, 93, 175, 0.133) 120.03%
-  );
-  box-shadow: 0px 4px 60px 0px #00000040;
-  border: none;
-  color: #fff; /* Ensure text is readable on the gradient background */
-  padding: 10px;
-  font-size: 1rem;
-  border-radius: 5px; /* Add rounded corners */
-  margin-left: 10px; /* Add some space between the selects */
-  cursor: pointer;
-  appearance: none; /* Remove default select arrow */
 }
 
 .statisticsDashboard {
@@ -83,7 +67,10 @@ select {
 }
 
 /* Responsive styles */
-@media (max-width: 1024px) {
+@media (min-width: 1024px) {
+  .statistics{
+    max-width: 395px;
+  }
   .statisticsDashboard,
   .statisticsTable {
     width: 100%;
@@ -91,15 +78,19 @@ select {
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .selectContainer {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row; /* Default to row for tablets */
+    justify-content: flex-end; /* Align items to the end */
+    align-items: center; /* Center items vertically */
+  }
+  .statistics{
+    max-width: 366px;
   }
 
   select {
-    margin-bottom: 10px;
-    width: 100%;
+    width: auto; /* Allow dropdowns to adjust their width */
+    margin-left: 10px; /* Maintain space between dropdowns */
   }
 
   table {
@@ -113,15 +104,10 @@ select {
   }
 
   .selectContainer {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: column; /* Stack items vertically on mobile */
+    align-items: center; /* Center items horizontally */
+    text-align: center; /* Center text */
   }
-
-  select {
-    margin-bottom: 10px;
-    width: 100%;
-  }
-
   table {
     font-size: 0.75rem;
   }

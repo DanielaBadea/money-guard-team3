@@ -1,51 +1,177 @@
-
-.transactionItem{
-/* width: max(80%,565px); */
-width: 100%;
-height: 100%;
-grid-template-columns: repeat(7, 1fr);
-font-family: Poppins, sans-serif;
-font-size: 14px;
-font-weight: 600;
-display: grid;
-align-items: center;
-justify-items: center;
-padding-top: 16px;
-padding-bottom: 16px;
-border-bottom: 1px solid #ffff;
+.mobileItem{
+    border-radius: 10px;
+    width: 100%;
+    min-width: 280px;
+    height: 293px;
+    background: #fff3;
+    position: relative;
 }
-td {
-text-align: center;
-color:#ffff;
+.mobileItem:nth-last-child(n){
+    margin-bottom: 15px;
 }
-
-.income{
-color: #ff868d;
+.mobileTable{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
-.expense{
-font-family: "Poppins", sans-serif;
-font-weight: 600;
-font-size: 14px;
-text-align: right;
-color: #ffb627;
+.bgTh{
+    width: 10px;
+    height: 293px;
+    position: absolute;
+    z-index: 9;
+    border-radius: 3px;
 }
-.edit{
-cursor: pointer;
- width: 15px;
-height: 15px;
-color: white;
+.header{
+    display: flex;
+    flex-direction: column;
+}
+.incomeTh{
+    background-color: #ff868d;
+}
+.expenseTh{
+    background-color: #ffb627;
+}
+.colHeader{
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #fbfbfb;
+    padding: 12px 20px;
+    border-bottom: 1px solid #ffffff4a;
+}
+.rowMob{
+    display: flex;
+    flex-direction: column;
+}
+.cell{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: right;
+    color: #fbfbfb;
+    padding: 12px 20px;
+    border-bottom: 1px solid #ffffff4a;
+}
+.btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 14px;
 }
 .btn{
-border-radius: 20px;
-padding: 4px 12px;
-box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
-background: linear-gradient(167deg, #ffc727 0%, #9e40ba 61.46%, #7000ff 90.54%);
-font-family: "Poppins", sans-serif;
-font-weight: 400;
-font-size: 14px;
-text-align: center;
-color: #fbfbfb;
-border: none;
-outline: none;
-cursor: pointer;
+    height: 29px;
+    border-radius: 20px;
+    padding: 4px 12px;
+    box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+    background: linear-gradient(167deg, #ffc727 0%, #9e40ba 61.46%, #7000ff 90.54%);
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+    color: #fbfbfb;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    }
+    .btnEdit{
+    height: 29px;
+    letter-spacing: .02em;
+    text-align: center;
+    color: #fff9;
+    border-radius: 18px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 5px;
+    padding: 4px 12px;
+    cursor: pointer;
+    transition: background-color 0.02s ease-in, color 0.02s ease-in ;
+    }
+    .icon{
+        width: 18px;
+        height: 18px;
+    }
+    .btnEdit span{
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    }
+    .btnEdit:hover{
+        box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+        background: linear-gradient(167deg, #ffc727 0%, #9e40ba 61.46%, #7000ff 90.54%);
+        color: #ffff;
+    }
+    .income{
+        color: #ff868d;
+        }
+        .expense{
+        color: #ffb627;
+        }
+@media (min-width: 768px){
+    .rowMob{
+        display: none;
+    }
+    .transactionItem{
+        display: block;
+        /* width: max(80%,565px); */
+        width: 100%;
+        height: 100%;
+        grid-template-columns: repeat(7, 1fr);
+        font-family: Poppins, sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid #ffff;
+        }
+        td {
+        text-align: center;
+        color:#ffff;
+        }
+        .bgTh{
+            display: none;
+        }
+        .income{
+            color: #ff868d;
+            }
+            .expense{
+            font-family: "Poppins", sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            text-align: right;
+            color: #ffb627;
+            }
+        .edit{
+        cursor: pointer;
+        color: #ffffff;
+        background-color: transparent;
+        border-radius: 18px;
+        width: 25px;
+        height: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: color 0.02s ease-in ;
+        }
+        .svg{
+        width: 15px;
+        height: 15px;
+        transform: scale(1);
+        }
+        .edit:hover{
+        /* color: #7000ff;  */
+        box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+        background: linear-gradient(167deg, #ffc727 0%, #9e40ba 61.46%, #7000ff 90.54%);
+        }
+        .edit:hover .svg{
+            transform: scale(1.4); 
+        }
+       
 }

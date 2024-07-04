@@ -1,33 +1,31 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getTransactionsSummary} from './operations';
+import { getTransactionsSummary } from './operations';
 
-const summaryTrInitialState = {
-    summary: {},
-    isLoading: false,
-    error: null,
-  };
-  
-  const handlePending = (state) => {
-    state.isLoading = true;
-  };
-  
-  const handleRejected = (state, action) => {
-    state.isLoading = false;
-    state.error = action.payload;
-  };
-  
-  const summaryTrSlice = createSlice({
-    name: "transactions",
-    initialState: summaryTrInitialState,
-    extraReducers: (builder) => {
-      builder
-        .addCase(getTransactionsSummary.pending, handlePending)
-        .addCase(getTransactionsSummary.fulfilled, (state, action) => {
-          state.isLoading = false;
-          state.error = null;
-          state.summary = action.payload;
-        })
-        .addCase(getTransactionsSummary.rejected, handleRejected)
-    },
-  });
-  export const summaryTrReducer = summaryTrSlice.reducer;
+const initialState = {
+  summary: [],
+  isLoading: false,
+  error: null,
+};
+
+const summaryTrSlice = createSlice({
+  name: 'summary_transactions',
+  initialState,
+  extraReducers: builder => {
+    builder
+      .addCase(getTransactionsSummary.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getTransactionsSummary.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.summary = action.payload;
+      })
+      .addCase(getTransactionsSummary.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload; 
+      });
+  },
+});
+
+export const summaryTrReducer = summaryTrSlice.reducer;

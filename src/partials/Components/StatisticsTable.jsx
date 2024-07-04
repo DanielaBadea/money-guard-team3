@@ -1,74 +1,59 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import css from '../../sass/Module/StatisticsTable.module.css';
 import { useSelector } from 'react-redux';
-const StatisticsTable = () => {
-  const transactions =
-    useSelector(state => state.transactions.currentMonth) || [];
+import { selectorIsLoading } from '../../redux/summaryTransactions/selectors';
+import Loader from './Loader';
 
-  // Filter transactions into expenses and income
-  const expenses = transactions.filter(
-    transaction => transaction.type === 'expense'
-  );
-  const income = transactions.filter(
-    transaction => transaction.type === 'income'
-  );
+const StatisticsTable = ({ summary }) => {
+  if (!summary || !summary.categoriesSummary) {
+    return <div className={css.noData}>No data available</div>;
+  }
 
+  const { categoriesSummary, incomeSummary, expenseSummary } = summary;
+  const hasTransactions = categoriesSummary.length > 0;
+  const isLoading = useSelector(selectorIsLoading);
   return (
     <div className={css.statisticsTable}>
-      
-      <table>
-        <thead>
-          <tr>
-            <th colSpan="2">Category</th>
-            <th>Sum</th>
-          </tr>
-        </thead>
-        <tbody>
-          {/* Message if no transactions */}
-          {transactions.length === 0 && (
-            <tr>
-              <td colSpan="3">
-                You don't have any transactions in this period.
-              </td>
-            </tr>
+      {
+        isLoading? <Loader/>:
+        (
+          <>
+          {hasTransactions ? (
+            <>
+              <table className={css.table}>
+                <thead>
+                  <tr className={`${css.container} ${css.containerCol}`}>
+                    <th className={css.col}>Category</th>
+                    <th className={css.col}>Sum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {categoriesSummary.map((category, index) => (
+                    <tr key={index} className={`${css.container} ${css.containerRow}`}>
+                      <td className={css.row}>{category.name}</td>
+                      <td className={css.row}>{category.total}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <div className={`${css.container} ${css.containerTypesExpenses} ${css.containerStyle}`}>
+                <span>Income</span>
+                <span className={css[incomeSummary >= 0 ? 'income' : 'expense']}>{incomeSummary}</span>
+              </div>
+              <div className={`${css.container} ${css.containerStyle}`}>
+                <span>Expense</span>
+                <span className={css[expenseSummary >= 0 ? 'income' : 'expense']}>{expenseSummary}</span>
+              </div>
+            </>
+          ) : (
+            <div className={css.noTransactions}>
+              You don't have any transactions in this period.
+            </div>
           )}
+          </>
+        )
+      }
 
-          {/* Display Expenses section */}
-          <tr>
-            <td colSpan="2">
-              <strong>Expenses</strong>
-            </td>
-            <td>
-              {expenses.length > 0
-                ? expenses
-                    .reduce(
-                      (total, transaction) => total + transaction.amount,
-                      0
-                    )
-                    .toFixed(2)
-                : '0.00'}
-            </td>
-          </tr>
-
-          {/* Display Income section */}
-          <tr>
-            <td colSpan="2">
-              <strong>Income</strong>
-            </td>
-            <td>
-              {income.length > 0
-                ? income
-                    .reduce(
-                      (total, transaction) => total + transaction.amount,
-                      0
-                    )
-                    .toFixed(2)
-                : '0.00'}
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   );
 };
