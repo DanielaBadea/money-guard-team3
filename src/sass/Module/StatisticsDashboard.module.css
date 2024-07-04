@@ -15,7 +15,7 @@
 .selectWrapper {
   position: relative;
   width: 182px;
-  height: 50px;
+  max-height: 50px;
 }
 
 .label {
@@ -51,9 +51,18 @@
   box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
   z-index: 1000;
   height: 157px;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.dropdown::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
+.dropdown {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
 .option {
   font-family: "Poppins", sans-serif;
   font-weight: 400;

@@ -10,7 +10,12 @@
 }
 .tableMobile {
   height: 75%;
-  overflow-y: scroll;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.tableMobile::-webkit-scrollbar{
+  width: 0;
+  height: 0;
 }
 .placeholder{
     font-family: Poppins, sans-serif;
