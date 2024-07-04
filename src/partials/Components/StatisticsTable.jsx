@@ -4,7 +4,20 @@ import { useSelector } from 'react-redux';
 import { selectorIsLoading } from '../../redux/summaryTransactions/selectors';
 import Loader from './Loader';
 
+const colors = [
+          '#fed057', 
+          '#ffd8d0', 
+          '#fd9498', 
+          '#c5baff',
+          '#6e78e8',
+          '#4a56e2',
+          '#81e1ff',
+          ' #24cca7',
+          '#00ad84',
+];
+
 const StatisticsTable = ({ summary }) => {
+  console.log('summary', summary );
   if (!summary || !summary.categoriesSummary) {
     return <div className={css.noData}>No data available</div>;
   }
@@ -12,6 +25,7 @@ const StatisticsTable = ({ summary }) => {
   const { categoriesSummary, incomeSummary, expenseSummary } = summary;
   const hasTransactions = categoriesSummary.length > 0;
   const isLoading = useSelector(selectorIsLoading);
+  
   return (
     <div className={css.statisticsTable}>
       {
@@ -30,7 +44,13 @@ const StatisticsTable = ({ summary }) => {
                 <tbody>
                   {categoriesSummary.map((category, index) => (
                     <tr key={index} className={`${css.container} ${css.containerRow}`}>
-                      <td className={css.row}>{category.name}</td>
+                      <td className={css.row}>
+                        <div 
+                          className={css.colorBox} 
+                          style={{ backgroundColor: colors[index % colors.length] }}
+                        ></div>
+                        {category.name}
+                      </td>
                       <td className={css.row}>{category.total}</td>
                     </tr>
                   ))}
@@ -53,7 +73,6 @@ const StatisticsTable = ({ summary }) => {
           </>
         )
       }
-
     </div>
   );
 };

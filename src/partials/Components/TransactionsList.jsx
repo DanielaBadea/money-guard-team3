@@ -14,6 +14,7 @@ const TransactionsList = () => {
     const { isOpen, openModal, closeModal } = useModal();
     const dispatch = useDispatch();
     const transactions = useSelector(selectorTransactions);
+    console.log('transactions', transactions);
     const isLoading = useSelector(selectorIsLoading);
     const error = useSelector(selectorError);
     const hasTransaction = transactions.length > 0;

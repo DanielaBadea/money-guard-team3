@@ -33,9 +33,16 @@
 .containerRow{
   font-weight: 400;
   font-size: 14px;
-  padding: 16px 16px 16px 52px;
+  padding: 16px 16px 16px 16px;
   border-bottom: 1px solid #fbfbfb42;
 }
+.colorBox {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 8px;
+}
+
 .containerTypesExpenses{
   margin-bottom: 16px;
 }

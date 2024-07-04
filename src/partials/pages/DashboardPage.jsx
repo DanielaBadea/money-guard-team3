@@ -1,5 +1,5 @@
-import React, { lazy, useEffect } from 'react';
-import { Routes, Route, NavLink, useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import HomeTab from './HomeTab';
 import StatisticsTab from './StatisticsTab';

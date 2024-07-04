@@ -5,11 +5,14 @@
     font-weight: 600;
     text-align: center;
 }
+.wrapper{
+  margin-bottom: 20px;
+}
 .table {
   display: none;
 }
 .tableMobile {
-  height: 75%;
+  height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
 }

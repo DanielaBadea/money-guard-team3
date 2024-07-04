@@ -3,7 +3,7 @@
 } */
 .dashboardPage {
   background: #000000;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   overflow: hidden;
   position: relative;
