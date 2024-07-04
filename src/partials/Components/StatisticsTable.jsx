@@ -5,7 +5,6 @@ import { selectorIsLoading } from '../../redux/summaryTransactions/selectors';
 import Loader from './Loader';
 
 const StatisticsTable = ({ summary }) => {
-
   if (!summary || !summary.categoriesSummary) {
     return <div className={css.noData}>No data available</div>;
   }

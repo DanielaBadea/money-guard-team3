@@ -5,7 +5,6 @@ import { selectorError, selectorIsLoading, selectorSummaryTr } from "../../redux
 import { getTransactionsSummary } from "../../redux/summaryTransactions/operations";
 import StatisticsDashboard from "../Components/StatisticsDashboard";
 import StatisticsTable from "../Components/StatisticsTable";
-
 const StatisticsTab = () => {
   const transactionsSummary = useSelector(selectorSummaryTr);
   const dispatch = useDispatch();
